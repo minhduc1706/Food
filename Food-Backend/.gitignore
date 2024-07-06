@@ -1,0 +1,18 @@
+# Dependency directories
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment variables
+.env
+
+# TypeScript build directory
+dist/
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs
+logs/
+*.log
