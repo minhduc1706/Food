@@ -9,7 +9,7 @@ import {
 import { CircleUserRound, LogOut } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const UsernameMem = () => {
+const UsernameMemu = () => {
   const { user, logout } = useAuth0();
 
   return (
@@ -44,4 +44,4 @@ const UsernameMem = () => {
   );
 };
 
-export default UsernameMem;
+export default UsernameMemu;
