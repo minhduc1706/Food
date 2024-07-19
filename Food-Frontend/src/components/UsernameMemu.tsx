@@ -17,13 +17,18 @@ const UsernameMemu = () => {
       <DropdownMenuTrigger asChild>
         <button className="flex items-center px-3 py-2 rounded-md bg-white shadow-md hover:bg-orange-100 gap-2 transition duration-200 ease-in-out">
           <CircleUserRound className="text-orange-500" />
-          <span className="text-sm text-gray-700 font-semibold">{user?.email}</span>
+          <span className="text-sm text-gray-700 font-semibold">
+            {user?.email}
+          </span>
         </button>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="bg-white border border-gray-200 rounded-md shadow-lg mt-2 w-48 text-center">
         <DropdownMenuItem asChild>
-          <Link to="/user-profile" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md transition duration-200 ease-in-out">
+          <Link
+            to="/user-profile"
+            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md transition duration-200 ease-in-out"
+          >
             User
           </Link>
         </DropdownMenuItem>
