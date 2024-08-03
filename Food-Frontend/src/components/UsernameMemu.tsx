@@ -26,6 +26,17 @@ const UsernameMemu = () => {
       <DropdownMenuContent className="bg-white border border-gray-200 rounded-md shadow-lg mt-2 w-48 text-center">
         <DropdownMenuItem asChild>
           <Link
+            to="/manage-restaurant"
+            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md transition duration-200 ease-in-out"
+          >
+            Manage restaurant
+          </Link>
+        </DropdownMenuItem>
+
+        <DropdownMenuSeparator className="my-2" />
+
+        <DropdownMenuItem asChild>
+          <Link
             to="/user-profile"
             className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md transition duration-200 ease-in-out"
           >
