@@ -1,6 +1,6 @@
 import express from "express";
 import multer from "multer";
-import MyRestaurantController from "../controllers/MyRestaurantController";
+import restaurantController from "../controllers/restaurantController";
 import { jwtCheck, jwtParse } from "../middleware/auth";
 import { validateMyRestaurantRequest } from "../middleware/validation";
 
@@ -19,7 +19,7 @@ router.post(
   validateMyRestaurantRequest,
   jwtCheck,
   jwtParse,
-  MyRestaurantController.createMyRestaurant
+  restaurantController.createRestaurant
 );
 
 export default router;

@@ -19,6 +19,7 @@ const DetailSection = () => {
       </div>
       <FormField
         control={control}
+        defaultValue=""
         name="restaurantName"
         render={({ field }) => (
           <FormItem>
@@ -34,6 +35,7 @@ const DetailSection = () => {
       <div className="flex gap-4">
         <FormField
           control={control}
+          defaultValue=""
           name="city"
           render={({ field }) => (
             <FormItem className="flex-1">
@@ -48,6 +50,7 @@ const DetailSection = () => {
 
         <FormField
           control={control}
+          defaultValue=""
           name="country"
           render={({ field }) => (
             <FormItem className="flex-1">
@@ -64,6 +67,7 @@ const DetailSection = () => {
       <div className="flex gap-4">
         <FormField
           control={control}
+          defaultValue=""
           name="deliveryPrice"
           render={({ field }) => (
             <FormItem className="max-w-[25%]">
@@ -78,6 +82,7 @@ const DetailSection = () => {
 
         <FormField
           control={control}
+          defaultValue=""
           name="estimatedDeliveryTime"
           render={({ field }) => (
             <FormItem>

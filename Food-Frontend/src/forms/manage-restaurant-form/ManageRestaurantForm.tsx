@@ -40,15 +40,15 @@ const formShema = z.object({
   imageFile: z.instanceof(File, { message: "image is required" }),
 });
 
-export type restaurantFormData = z.infer<typeof formShema>;
+export type RestaurantFormData = z.infer<typeof formShema>;
 
 type Props = {
-  onSave: (restaurantFormData: FormData) => void;
+  onSave: (RestaurantFormData: FormData) => void;
   isLoading: boolean;
 };
 
 const ManageRestaurantForm = ({ onSave, isLoading }: Props) => {
-  const form = useForm<restaurantFormData>({
+  const form = useForm<RestaurantFormData>({
     resolver: zodResolver(formShema),
     defaultValues: {
       cuisines: [],
@@ -56,7 +56,28 @@ const ManageRestaurantForm = ({ onSave, isLoading }: Props) => {
     },
   });
 
-  const onSubmit = (formDataJson: restaurantFormData) => {};
+  const onSubmit = (formDataJson: RestaurantFormData) => {
+    const formData = new FormData();
+
+    formData.append("restaurantName", formDataJson.restaurantName);
+    formData.append("city", formDataJson.city);
+    formData.append("country", formDataJson.country);
+    formData.append("deliveryPrice", formDataJson.deliveryPrice.toString());
+    formData.append(
+      "estimatedDeliveryTime",
+      formDataJson.estimatedDeliveryTime.toString()
+    );
+    formDataJson.cuisines.forEach((cuisine, index) => {
+      formData.append(`cuisines[${index}]`, cuisine);
+    });
+    formDataJson.menuItems.forEach((item, index) => {
+      formData.append(`menuItems[${index}][name]`, item.name);
+      formData.append(`menuItems[${index}][price]`, item.price.toString());
+    });
+    formData.append("imageFile", formDataJson.imageFile);
+
+    onSave(formData);
+  };
 
   return (
     <Form {...form}>
@@ -71,7 +92,7 @@ const ManageRestaurantForm = ({ onSave, isLoading }: Props) => {
         <MenuSection />
         <Separator />
         <ImageSection />
-        {isLoading? <LoadingButton/>: <Button type="submit">Submit</Button>}
+        {isLoading ? <LoadingButton /> : <Button type="submit">Submit</Button>}
       </form>
     </Form>
   );
