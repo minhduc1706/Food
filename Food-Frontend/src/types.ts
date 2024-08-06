@@ -1,4 +1,3 @@
-
 export type User = {
   _id: string;
   email: string;
@@ -9,10 +8,10 @@ export type User = {
 };
 
 export type MenuItem = {
-    _id: string;
-    name: string;
-    price: number;
-}
+  _id: string;
+  name: string;
+  price: number;
+};
 
 export type Restaurant = {
   _id: string;
