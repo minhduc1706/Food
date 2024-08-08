@@ -25,7 +25,7 @@ const restaurantShema = new mongoose.Schema({
         type: String,
         require: true
     },
-    delivertyPrice: {
+    deliveryPrice: {
         type: Number,
         require: true
     },
@@ -33,11 +33,11 @@ const restaurantShema = new mongoose.Schema({
         type: Number,
         require: true
     },
-    cuisine: {
+    cuisines: [{
         type: String,
         require: true
-    },
-    menuItem: [menuItemShema],
+    }],
+    menuItems: [menuItemShema],
     imageUrl: {
         type: String,
         require: true
