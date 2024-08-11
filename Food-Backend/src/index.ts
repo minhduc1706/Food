@@ -2,8 +2,9 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
-import userRoutes from "./routes/userRoutes";
-import restaurantRouter from "./routes/restaurantRoute";
+import userRoutes from "./routes/UserRoutes";
+import userRestaurantstRouter from "./routes/UserRestaurantstRouter";
+import restaurantListRouter from "./routes/RestaurantListRoute";
 import { v2 as cloudinary } from "cloudinary";
 import { errorHandler } from "./middleware/errorHandler";
 
@@ -22,7 +23,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/v1/users", userRoutes);
-app.use("/api/v1/restaurants", restaurantRouter);
+app.use("/api/v1/userRestaurants", userRestaurantstRouter);
+app.use("/api/v1/restaurantsList", restaurantListRouter);
 
 app.use(errorHandler);
 

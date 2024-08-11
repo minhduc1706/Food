@@ -11,7 +11,9 @@ const createCurrentUser = async (
     const existingUser = await User.findOne({ auth0Id });
 
     if (existingUser) {
-      return res.status(409).json({ message: "User already exists" });
+      const error: any = new Error("User already exists");
+      error.status = 409;
+      return next(error);
     }
 
     const newUser = new User(req.body);
@@ -33,7 +35,9 @@ const updateCurrentUser = async (
     const user = await User.findById(req.userId);
 
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      const error: any = new Error("User not found");
+      error.status = 404;
+      return next(error);
     }
 
     user.name = name || user.name;

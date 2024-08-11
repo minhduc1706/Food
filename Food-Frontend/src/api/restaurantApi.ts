@@ -11,7 +11,7 @@ export const useGetRestaurant = () => {
   const getRestaurantRequest = useCallback(async (): Promise<Restaurant> => {
     const accessToken = await getAccessTokenSilently();
 
-    return makeApiRequest<Restaurant>("/restaurants", {
+    return makeApiRequest<Restaurant>("/userRestaurants", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -54,7 +54,7 @@ export const useCreateRestaurant = () => {
   ): Promise<Restaurant> => {
     const accessToken = await getAccessTokenSilently();
 
-    return makeApiRequest<Restaurant>("/restaurants", {
+    return makeApiRequest<Restaurant>("/userRestaurants", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -68,7 +68,7 @@ export const useCreateRestaurant = () => {
     {
       onSuccess: () => {
         toast.success("Restaurant created successfully!");
-        queryClient.invalidateQueries("restaurants");
+        queryClient.invalidateQueries("userRestaurants");
       },
       onError: (error: any) => {
         const errorMessage =
@@ -89,7 +89,7 @@ export const useUpdateRestaurant = () => {
     async (restaurantFormData: FormData): Promise<Restaurant> => {
       const accessToken = await getAccessTokenSilently();
 
-      return makeApiRequest<Restaurant>("/restaurants", {
+      return makeApiRequest<Restaurant>("/userRestaurants", {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${accessToken}`,
