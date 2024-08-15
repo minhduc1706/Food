@@ -1,0 +1,602 @@
+[
+  {
+    "_id": "64b4be8d9e980f5c8686eee7",
+    "user": "66964f9159963d3ecf93061",
+    "restaurantName": "Sunset Grill",
+    "country": "USA",
+    "city": "Los Angeles",
+    "deliveryPrice": 500,
+    "estimatedDeliveryTime": 30,
+    "cuisines": ["BBQ", "American", "Burgers"],
+    "menuItems": [
+      {
+        "name": "Grilled Chicken Sandwich",
+        "price": 999,
+        "_id": "64b4be8d9e980f5c8686eef4"
+      },
+      {
+        "name": "BBQ Ribs",
+        "price": 1999,
+        "_id": "64b4be8d9e980f5c8686eef5"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eee8",
+    "user": "66964f9159963d3ecf93062",
+    "restaurantName": "Pizza Palace",
+    "country": "Canada",
+    "city": "Toronto",
+    "deliveryPrice": 200,
+    "estimatedDeliveryTime": 45,
+    "cuisines": ["Italian", "Pizza", "Desserts"],
+    "menuItems": [
+      {
+        "name": "Margherita Pizza",
+        "price": 1299,
+        "_id": "64b4be8d9e980f5c8686eef6"
+      },
+      {
+        "name": "Chocolate Cake",
+        "price": 499,
+        "_id": "64b4be8d9e980f5c8686eef7"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eee9",
+    "user": "66964f9159963d3ecf93063",
+    "restaurantName": "Taco Fiesta",
+    "country": "Mexico",
+    "city": "Mexico City",
+    "deliveryPrice": 100,
+    "estimatedDeliveryTime": 50,
+    "cuisines": ["Mexican", "BBQ"],
+    "menuItems": [
+      {
+        "name": "Tacos al Pastor",
+        "price": 699,
+        "_id": "64b4be8d9e980f5c8686eef8"
+      },
+      {
+        "name": "Guacamole",
+        "price": 299,
+        "_id": "64b4be8d9e980f5c8686eef9"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eeea",
+    "user": "66964f9159963d3ecf93064",
+    "restaurantName": "Curry House",
+    "country": "India",
+    "city": "Mumbai",
+    "deliveryPrice": 300,
+    "estimatedDeliveryTime": 40,
+    "cuisines": ["Indian", "Desserts"],
+    "menuItems": [
+      {
+        "name": "Butter Chicken",
+        "price": 999,
+        "_id": "64b4be8d9e980f5c8686eefa"
+      },
+      {
+        "name": "Gulab Jamun",
+        "price": 199,
+        "_id": "64b4be8d9e980f5c8686eefb"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eeeb",
+    "user": "66964f9159963d3ecf93065",
+    "restaurantName": "Pasta Lovers",
+    "country": "Italy",
+    "city": "Rome",
+    "deliveryPrice": 400,
+    "estimatedDeliveryTime": 35,
+    "cuisines": ["Italian", "Breakfast", "Cafe"],
+    "menuItems": [
+      {
+        "name": "Spaghetti Carbonara",
+        "price": 1499,
+        "_id": "64b4be8d9e980f5c8686eefc"
+      },
+      {
+        "name": "Tiramisu",
+        "price": 599,
+        "_id": "64b4be8d9e980f5c8686eefd"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eeec",
+    "user": "66964f9159963d3ecf93066",
+    "restaurantName": "Sushi World",
+    "country": "Japan",
+    "city": "Tokyo",
+    "deliveryPrice": 250,
+    "estimatedDeliveryTime": 25,
+    "cuisines": ["Japanese", "Seafood", "Desserts"],
+    "menuItems": [
+      {
+        "name": "Sushi Platter",
+        "price": 1999,
+        "_id": "64b4be8d9e980f5c8686eefe"
+      },
+      {
+        "name": "Mochi",
+        "price": 399,
+        "_id": "64b4be8d9e980f5c8686eeff"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eeed",
+    "user": "66964f9159963d3ecf93067",
+    "restaurantName": "Waffle House",
+    "country": "Belgium",
+    "city": "Brussels",
+    "deliveryPrice": 100,
+    "estimatedDeliveryTime": 55,
+    "cuisines": ["Desserts", "Breakfast", "Cafe"],
+    "menuItems": [
+      {
+        "name": "Belgian Waffle",
+        "price": 599,
+        "_id": "64b4be8d9e980f5c8686ef00"
+      },
+      {
+        "name": "Hot Chocolate",
+        "price": 399,
+        "_id": "64b4be8d9e980f5c8686ef01"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eeef",
+    "user": "66964f9159963d3ecf93068",
+    "restaurantName": "The Great Burger",
+    "country": "USA",
+    "city": "New York",
+    "deliveryPrice": 300,
+    "estimatedDeliveryTime": 20,
+    "cuisines": ["Burgers", "BBQ", "American"],
+    "menuItems": [
+      {
+        "name": "Classic Burger",
+        "price": 899,
+        "_id": "64b4be8d9e980f5c8686ef02"
+      },
+      {
+        "name": "Fries",
+        "price": 299,
+        "_id": "64b4be8d9e980f5c8686ef03"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eef0",
+    "user": "66964f9159963d3ecf93069",
+    "restaurantName": "Tandoori Nights",
+    "country": "India",
+    "city": "Delhi",
+    "deliveryPrice": 250,
+    "estimatedDeliveryTime": 60,
+    "cuisines": ["Indian", "BBQ", "Desserts"],
+    "menuItems": [
+      {
+        "name": "Chicken Tandoori",
+        "price": 1199,
+        "_id": "64b4be8d9e980f5c8686ef04"
+      },
+      {
+        "name": "Raita",
+        "price": 199,
+        "_id": "64b4be8d9e980f5c8686ef05"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eef1",
+    "user": "66964f9159963d3ecf93070",
+    "restaurantName": "Sushi & Roll",
+    "country": "Japan",
+    "city": "Osaka",
+    "deliveryPrice": 150,
+    "estimatedDeliveryTime": 30,
+    "cuisines": ["Japanese", "Seafood"],
+    "menuItems": [
+      {
+        "name": "Tempura Roll",
+        "price": 899,
+        "_id": "64b4be8d9e980f5c8686ef06"
+      },
+      {
+        "name": "Edamame",
+        "price": 399,
+        "_id": "64b4be8d9e980f5c8686ef07"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eef2",
+    "user": "66964f9159963d3ecf93071",
+    "restaurantName": "Pancake Place",
+    "country": "USA",
+    "city": "Los Angeles",
+    "deliveryPrice": 200,
+    "estimatedDeliveryTime": 40,
+    "cuisines": ["Breakfast", "Desserts"],
+    "menuItems": [
+      {
+        "name": "Pancake Stack",
+        "price": 799,
+        "_id": "64b4be8d9e980f5c8686ef08"
+      },
+      {
+        "name": "Maple Syrup",
+        "price": 299,
+        "_id": "64b4be8d9e980f5c8686ef09"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eef3",
+    "user": "66964f9159963d3ecf93072",
+    "restaurantName": "Cafe Delight",
+    "country": "France",
+    "city": "Paris",
+    "deliveryPrice": 400,
+    "estimatedDeliveryTime": 25,
+    "cuisines": ["French", "Cafe"],
+    "menuItems": [
+      {
+        "name": "Croissant",
+        "price": 299,
+        "_id": "64b4be8d9e980f5c8686ef0a"
+      },
+      {
+        "name": "Latte",
+        "price": 499,
+        "_id": "64b4be8d9e980f5c8686ef0b"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eef4",
+    "user": "66964f9159963d3ecf93073",
+    "restaurantName": "Burger Haven",
+    "country": "USA",
+    "city": "New York",
+    "deliveryPrice": 350,
+    "estimatedDeliveryTime": 35,
+    "cuisines": ["Burgers", "American"],
+    "menuItems": [
+      {
+        "name": "Cheeseburger",
+        "price": 999,
+        "_id": "64b4be8d9e980f5c8686ef0c"
+      },
+      {
+        "name": "Onion Rings",
+        "price": 399,
+        "_id": "64b4be8d9e980f5c8686ef0d"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eef5",
+    "user": "66964f9159963d3ecf93074",
+    "restaurantName": "Dim Sum Delight",
+    "country": "China",
+    "city": "Shanghai",
+    "deliveryPrice": 300,
+    "estimatedDeliveryTime": 30,
+    "cuisines": ["Chinese", "Dim Sum"],
+    "menuItems": [
+      {
+        "name": "Pork Dumplings",
+        "price": 899,
+        "_id": "64b4be8d9e980f5c8686ef0e"
+      },
+      {
+        "name": "Spring Rolls",
+        "price": 499,
+        "_id": "64b4be8d9e980f5c8686ef0f"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eef6",
+    "user": "66964f9159963d3ecf93075",
+    "restaurantName": "Salad Corner",
+    "country": "USA",
+    "city": "Los Angeles",
+    "deliveryPrice": 150,
+    "estimatedDeliveryTime": 20,
+    "cuisines": ["Salads", "Vegetarian"],
+    "menuItems": [
+      {
+        "name": "Caesar Salad",
+        "price": 799,
+        "_id": "64b4be8d9e980f5c8686ef10"
+      },
+      {
+        "name": "Fruit Salad",
+        "price": 499,
+        "_id": "64b4be8d9e980f5c8686ef11"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eef7",
+    "user": "66964f9159963d3ecf93076",
+    "restaurantName": "Italian Bistro",
+    "country": "Italy",
+    "city": "Rome",
+    "deliveryPrice": 350,
+    "estimatedDeliveryTime": 50,
+    "cuisines": ["Italian", "Pasta"],
+    "menuItems": [
+      {
+        "name": "Lasagna",
+        "price": 1499,
+        "_id": "64b4be8d9e980f5c8686ef12"
+      },
+      {
+        "name": "Bruschetta",
+        "price": 599,
+        "_id": "64b4be8d9e980f5c8686ef13"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eef8",
+    "user": "66964f9159963d3ecf93077",
+    "restaurantName": "Steakhouse Supreme",
+    "country": "USA",
+    "city": "Chicago",
+    "deliveryPrice": 500,
+    "estimatedDeliveryTime": 60,
+    "cuisines": ["Steaks", "American"],
+    "menuItems": [
+      {
+        "name": "Ribeye Steak",
+        "price": 1999,
+        "_id": "64b4be8d9e980f5c8686ef14"
+      },
+      {
+        "name": "Garlic Mashed Potatoes",
+        "price": 699,
+        "_id": "64b4be8d9e980f5c8686ef15"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eef9",
+    "user": "66964f9159963d3ecf93078",
+    "restaurantName": "Falafel House",
+    "country": "Lebanon",
+    "city": "Beirut",
+    "deliveryPrice": 200,
+    "estimatedDeliveryTime": 45,
+    "cuisines": ["Middle Eastern", "Vegetarian"],
+    "menuItems": [
+      {
+        "name": "Falafel Wrap",
+        "price": 699,
+        "_id": "64b4be8d9e980f5c8686ef16"
+      },
+      {
+        "name": "Hummus",
+        "price": 299,
+        "_id": "64b4be8d9e980f5c8686ef17"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eefa",
+    "user": "66964f9159963d3ecf93079",
+    "restaurantName": "Bagel Haven",
+    "country": "USA",
+    "city": "Chicago",
+    "deliveryPrice": 250,
+    "estimatedDeliveryTime": 30,
+    "cuisines": ["Bakery", "Breakfast"],
+    "menuItems": [
+      {
+        "name": "Bagel with Cream Cheese",
+        "price": 499,
+        "_id": "64b4be8d9e980f5c8686ef18"
+      },
+      {
+        "name": "Fruit Smoothie",
+        "price": 299,
+        "_id": "64b4be8d9e980f5c8686ef19"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eefb",
+    "user": "66964f9159963d3ecf9307a",
+    "restaurantName": "The Vegan Spot",
+    "country": "USA",
+    "city": "Los Angeles",
+    "deliveryPrice": 200,
+    "estimatedDeliveryTime": 20,
+    "cuisines": ["Vegan", "Vegetarian"],
+    "menuItems": [
+      {
+        "name": "Vegan Burger",
+        "price": 999,
+        "_id": "64b4be8d9e980f5c8686ef1a"
+      },
+      {
+        "name": "Green Smoothie",
+        "price": 399,
+        "_id": "64b4be8d9e980f5c8686ef1b"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eefc",
+    "user": "66964f9159963d3ecf9307b",
+    "restaurantName": "Pho Paradise",
+    "country": "Vietnam",
+    "city": "Ho Chi Minh City",
+    "deliveryPrice": 150,
+    "estimatedDeliveryTime": 30,
+    "cuisines": ["Vietnamese", "Noodles"],
+    "menuItems": [
+      {
+        "name": "Pho Bo",
+        "price": 699,
+        "_id": "64b4be8d9e980f5c8686ef1c"
+      },
+      {
+        "name": "Spring Rolls",
+        "price": 399,
+        "_id": "64b4be8d9e980f5c8686ef1d"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eefd",
+    "user": "66964f9159963d3ecf9307c",
+    "restaurantName": "Thai Express",
+    "country": "Thailand",
+    "city": "Bangkok",
+    "deliveryPrice": 250,
+    "estimatedDeliveryTime": 40,
+    "cuisines": ["Thai", "Street Food"],
+    "menuItems": [
+      {
+        "name": "Pad Thai",
+        "price": 799,
+        "_id": "64b4be8d9e980f5c8686ef1e"
+      },
+      {
+        "name": "Tom Yum Soup",
+        "price": 499,
+        "_id": "64b4be8d9e980f5c8686ef1f"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eefe",
+    "user": "66964f9159963d3ecf9307d",
+    "restaurantName": "Seafood Shack",
+    "country": "USA",
+    "city": "Seattle",
+    "deliveryPrice": 300,
+    "estimatedDeliveryTime": 50,
+    "cuisines": ["Seafood", "American"],
+    "menuItems": [
+      {
+        "name": "Clam Chowder",
+        "price": 999,
+        "_id": "64b4be8d9e980f5c8686ef20"
+      },
+      {
+        "name": "Fried Calamari",
+        "price": 699,
+        "_id": "64b4be8d9e980f5c8686ef21"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  },
+  {
+    "_id": "64b4be8d9e980f5c8686eeff",
+    "user": "66964f9159963d3ecf9307e",
+    "restaurantName": "Dim Sum Delight",
+    "country": "China",
+    "city": "Beijing",
+    "deliveryPrice": 350,
+    "estimatedDeliveryTime": 25,
+    "cuisines": ["Chinese", "Dim Sum"],
+    "menuItems": [
+      {
+        "name": "Shrimp Dumplings",
+        "price": 999,
+        "_id": "64b4be8d9e980f5c8686ef22"
+      },
+      {
+        "name": "Pork Buns",
+        "price": 499,
+        "_id": "64b4be8d9e980f5c8686ef23"
+      }
+    ],
+    "imageUrl": "http://res.cloudinary.com/dzzparyut/image/upload/v1723121292/wpozsttof...",
+    "lastUpdated": "2024-08-08T12:48:56.564+00:00",
+    "__v": 1
+  }
+]

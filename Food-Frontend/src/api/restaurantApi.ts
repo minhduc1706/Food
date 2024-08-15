@@ -1,117 +1,30 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
+import { makeApiRequest } from "./ApiRequest";
 import { toast } from "sonner";
-import { Restaurant } from "src/types";
-import { makeApiRequest } from "./apiRequest";
-import { useCallback } from "react";
+import { RestaurantSearchResponse } from "src/types";
 
-export const useGetRestaurant = () => {
-  const { getAccessTokenSilently } = useAuth0();
-
-  const getRestaurantRequest = useCallback(async (): Promise<Restaurant> => {
-    const accessToken = await getAccessTokenSilently();
-
-    return makeApiRequest<Restaurant>("/userRestaurants", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-  }, [getAccessTokenSilently]);
+export const useSearchRestaurants = (city: string) => {
+  const createSearchRequest = async () :Promise<RestaurantSearchResponse>=> {
+    return await makeApiRequest(`/restaurantsList/search/${city}`);
+  };
 
   const {
-    data: getRestaurant,
+    data: results,
     isLoading,
     error,
-  } = useQuery<Restaurant, Error>(
-    "getRestaurantRequest",
-    getRestaurantRequest,
-    {
-      onError: () => {
-        toast.error(
-          "Unable to load your profile at this moment. Please try again later."
-        );
-      },
-    }
-  );
+  } = useQuery(["searchRestaurants"], createSearchRequest, {
+    enabled: !!city,
+    onError: () => {
+      toast.error("Failed to fetch search results. Please try again later.");
+    },
+  });
 
   if (error) {
-    toast.error("Something went wrong. Please try again.");
+    toast.error("An error occurred while fetching data.");
   }
 
   return {
-    getRestaurant,
+    results,
     isLoading,
   };
-};
-
-export const useCreateRestaurant = () => {
-  const { getAccessTokenSilently } = useAuth0();
-  const queryClient = useQueryClient();
-
-  const createRestaurantRequest = async (
-    restaurantFormData: FormData
-  ): Promise<Restaurant> => {
-    const accessToken = await getAccessTokenSilently();
-
-    return makeApiRequest<Restaurant>("/userRestaurants", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-      data: restaurantFormData,
-    });
-  };
-
-  const { mutate: createRestaurant, isLoading } = useMutation(
-    createRestaurantRequest,
-    {
-      onSuccess: () => {
-        toast.success("Restaurant created successfully!");
-        queryClient.invalidateQueries("userRestaurants");
-      },
-      onError: (error: any) => {
-        const errorMessage =
-          error.response?.data?.message || "Failed to create restaurant";
-        toast.error(errorMessage);
-      },
-    }
-  );
-
-  return { createRestaurant, isLoading };
-};
-
-export const useUpdateRestaurant = () => {
-  const { getAccessTokenSilently } = useAuth0();
-  const queryClient = useQueryClient();
-
-  const updateRestaurantRequest = useCallback(
-    async (restaurantFormData: FormData): Promise<Restaurant> => {
-      const accessToken = await getAccessTokenSilently();
-
-      return makeApiRequest<Restaurant>("/userRestaurants", {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-        data: restaurantFormData,
-      });
-    },
-    [getAccessTokenSilently]
-  );
-
-  const { mutateAsync: updateRestaurant, isLoading } = useMutation(
-    updateRestaurantRequest,
-    {
-      onSuccess: () => {
-        toast.success("Restaurant updated!");
-        queryClient.invalidateQueries("fetchUserData");
-      },
-      onError: () => {
-        toast.error("Failed to update restaurant. Please try again later.");
-      },
-    }
-  );
-
-  return { updateRestaurant, isLoading };
 };

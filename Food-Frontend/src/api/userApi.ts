@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import { toast } from "sonner";
 import { User } from "src/types";
 import { useCallback } from "react";
-import { makeApiRequest } from "./apiRequest";
+import { makeApiRequest } from "./ApiRequest";
 
 type CreateUserRequest = {
   auth0Id: string;

@@ -1,4 +1,4 @@
-import { useFetchCurrentUser, useUpdateUser } from "src/api/userApi";
+import { useFetchCurrentUser, useUpdateUser } from "src/api/UserApi";
 import UserProfileForm from "src/forms/user-profile-form/UserProfileForm";
 
 const UserProfilePage = () => {
