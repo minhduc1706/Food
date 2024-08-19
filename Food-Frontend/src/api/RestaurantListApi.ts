@@ -12,6 +12,7 @@ export const useSearchRestaurants = (
     const params = new URLSearchParams();
     params.set("searchQuery", searchState.searchQuery);
     params.set("page", searchState.page.toString())
+    params.set("selectedCuisines", searchState.selectedCuisines.join(","))
 
     return await makeApiRequest(`/restaurantsList/search/${city}?${params.toString()}`);
   };
@@ -27,7 +28,7 @@ export const useSearchRestaurants = (
     },
   });
 
-  if (error) {
+  if (error) {  
     toast.error("An error occurred while fetching data.");
   }
 
