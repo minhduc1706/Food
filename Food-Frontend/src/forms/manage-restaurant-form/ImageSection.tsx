@@ -1,5 +1,5 @@
-import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { useFormContext } from "react-hook-form";
+import { AspectRatio } from "src/components/ui/aspect-ratio";
 import {
   FormControl,
   FormDescription,

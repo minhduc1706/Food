@@ -11,10 +11,13 @@ export const useSearchRestaurants = (
   const createSearchRequest = async (): Promise<RestaurantSearchResponse> => {
     const params = new URLSearchParams();
     params.set("searchQuery", searchState.searchQuery);
-    params.set("page", searchState.page.toString())
-    params.set("selectedCuisines", searchState.selectedCuisines.join(","))
+    params.set("page", searchState.page.toString());
+    params.set("selectedCuisines", searchState.selectedCuisines.join(","));
+    params.set("sortOption", searchState.sortOption);
 
-    return await makeApiRequest(`/restaurantsList/search/${city}?${params.toString()}`);
+    return await makeApiRequest(
+      `/restaurantsList/search/${city}?${params.toString()}`
+    );
   };
 
   const {
@@ -28,7 +31,7 @@ export const useSearchRestaurants = (
     },
   });
 
-  if (error) {  
+  if (error) {
     toast.error("An error occurred while fetching data.");
   }
 
