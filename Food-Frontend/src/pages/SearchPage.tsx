@@ -106,8 +106,9 @@ function SearchPage() {
         />
        </div>
         {results.data.map((restaurant) => (
-          <SearchResultCard restaurant={restaurant} />
+          <SearchResultCard restaurant={restaurant}  key={restaurant._id} />
         ))}
+        
         <PaginationSelector
           page={results.pagination.page}
           pages={results.pagination.pages}

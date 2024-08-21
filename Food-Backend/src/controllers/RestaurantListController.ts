@@ -1,5 +1,27 @@
 import { NextFunction, Request, Response } from "express";
 import Restaurant from "../models/restaurant";
+import mongoose from "mongoose";
+
+const getRestaurant = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const restaurantId = req.params.restaurantId;
+    const restaurant = await Restaurant.findById(restaurantId);
+
+    if (!restaurant) {
+      const error: any = new Error("Restaurant not found");
+      error.statusCode = 404;
+      throw error;
+    }
+
+    res.status(200).json(restaurant);
+  } catch (error) {
+    next(error);
+  }
+};
 
 const searchRestaurants = async (
   req: Request,
@@ -72,4 +94,4 @@ const searchRestaurants = async (
   }
 };
 
-export default { searchRestaurants };
+export default { searchRestaurants, getRestaurant };

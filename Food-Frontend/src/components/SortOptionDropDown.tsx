@@ -7,6 +7,7 @@ import {
 } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
 import { ChevronDown, Clock, DollarSign, Star } from "lucide-react";
+import { Fragment } from "react/jsx-runtime";
 
 type Props = {
   onChange: (value: string) => void;
@@ -38,7 +39,7 @@ const SortOptionDropDown = ({ onChange, sortOption }: Props) => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="cursor-pointer">
+      <DropdownMenuTrigger className="cursor-pointer" asChild>
         <Button variant="outline" className="w-full">
           Sort by: {selectedSortLabel}
           <ChevronDown className="h-5 w-5 text-gray-500" />
@@ -46,7 +47,7 @@ const SortOptionDropDown = ({ onChange, sortOption }: Props) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="bg-white border border-gray-200 rounded-md shadow-lg mt-2 w-48 text-center">
         {SORT_OPTIONS.map((option, index) => (
-          <>
+          <Fragment key={option.value}>
             <DropdownMenuItem
               className="cursor-pointer  px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md transition duration-200 ease-in-out"
               onClick={() => onChange(option.value)}
@@ -55,7 +56,7 @@ const SortOptionDropDown = ({ onChange, sortOption }: Props) => {
               {option.label}
             </DropdownMenuItem>
             {index < SORT_OPTIONS.length - 1 && <DropdownMenuSeparator />}
-          </>
+          </Fragment>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>

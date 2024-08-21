@@ -6,23 +6,23 @@ import UserProfilePage from "./pages/UserProfilePage";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import ManageRestaurantPage from "./pages/ManageRestaurantPage";
 import SearchPage from "./pages/SearchPage";
+import DetailPage from "./pages/DetailPage";
 
 const AppRoutes = () => {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="/auth-callback" element={<AuthCallbackPage />}></Route>
-        <Route path="/search/:city" element={<SearchPage />}></Route>
-        
+        <Route path="/" element={<HomePage />} />
+        <Route path="/auth-callback" element={<AuthCallbackPage />} />
+        <Route path="/search/:city" element={<SearchPage />} />
+        <Route path="/detail/:restaurantId" element={<DetailPage />} />
+
         <Route element={<ProtectedRoute />}>
-          <Route path="/user-profile" element={<UserProfilePage />}></Route>
-          <Route
-            path="/manage-restaurant"
-            element={<ManageRestaurantPage />}
-          ></Route>
+          <Route path="/user-profile" element={<UserProfilePage />} />
+          <Route path="/manage-restaurant" element={<ManageRestaurantPage />} />
         </Route>
-        <Route path="*" element={<Navigate to="/" />}></Route>
+
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Layout>
   );

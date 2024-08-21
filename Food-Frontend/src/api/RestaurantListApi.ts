@@ -1,8 +1,34 @@
 import { useQuery } from "react-query";
 import { makeApiRequest } from "./ApiRequest";
 import { toast } from "sonner";
-import { RestaurantSearchResponse } from "src/types";
+import { Restaurant, RestaurantSearchResponse } from "src/types";
 import { SearchState } from "src/pages/SearchPage";
+
+export const useGetRestaurant = (restaurantId?: string) => {
+  const getRestaurantByIdRequest = async (): Promise<Restaurant> => {
+    return await makeApiRequest<Restaurant>(`/restaurantsList/${restaurantId}`);
+  };
+  const { data: restaurant, isLoading } = useQuery(
+    ["fetchRestaurant", restaurantId],
+    getRestaurantByIdRequest,
+    {
+      enabled: !!restaurantId,
+      staleTime: 5 * 60 * 1000,
+      cacheTime: 10 * 60 * 1000,
+      onError: (err) => {
+        console.error('Error fetching restaurant:', err);
+        toast.error(
+          "An error occurred while fetching the restaurant. Please try again later."
+        );
+      },
+    }
+  );
+
+  return {
+    restaurant,
+    isLoading,
+  };
+};
 
 export const useSearchRestaurants = (
   searchState: SearchState,
