@@ -23,10 +23,10 @@ const UsernameMemu = () => {
         </button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="bg-white border border-gray-200 rounded-md shadow-lg mt-2 w-48 text-center">
+      <DropdownMenuContent className="bg-white border border-gray-200 rounded-md shadow-lg mt-2 w-48 text-center relative z-50">
         <DropdownMenuItem asChild>
           <Link
-            to="/manage-restaurant"
+            to="/manage-restaurant" 
             className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md transition duration-200 ease-in-out"
           >
             Manage restaurant
