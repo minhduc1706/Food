@@ -18,6 +18,11 @@ type Props = {
 };
 
 const OrderSummary = ({ restaurant, cartItems, removeFromCart }: Props) => {
+  const formatCurrency = (amount: number) => {
+    const formattedAmount = amount.toFixed(2);
+    return formattedAmount.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   const getTotalCost = () => {
     const totalInPence = cartItems.reduce(
       (total, cartItems) => total + cartItems.price * cartItems.quantity,
@@ -44,7 +49,7 @@ const OrderSummary = ({ restaurant, cartItems, removeFromCart }: Props) => {
               {item.name}
             </span>
             <span className="flex items-center gap-1">
-              ${item.price * item.quantity}
+              ${formatCurrency(item.price * item.quantity)}
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
@@ -69,7 +74,7 @@ const OrderSummary = ({ restaurant, cartItems, removeFromCart }: Props) => {
         <Separator />
         <div className="flex justify-between">
           <span>Delivery</span>
-          <span>${restaurant.deliveryPrice}</span>
+          <span>${formatCurrency(restaurant.deliveryPrice)}</span>
         </div>
         <Separator />
       </CardContent>

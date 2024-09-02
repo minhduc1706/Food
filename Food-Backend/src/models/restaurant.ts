@@ -1,52 +1,61 @@
-import mongoose from "mongoose";
-
+import mongoose, { InferSchemaType, mongo } from "mongoose";
 
 const menuItemShema = new mongoose.Schema({
-    name: {
-        type: String,
-        require: true
-    },
-    price: {
-        type: Number,
-        require: true
-    },
-})
+  _id: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    default: ()=> new mongoose.Types.ObjectId()
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+});
+
+export type MenuItemType = InferSchemaType<typeof menuItemShema>
 
 const restaurantShema = new mongoose.Schema({
-    user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
-    restaurantName: {
-        type: String,
-        require: true
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  restaurantName: {
+    type: String,
+    required: true,
+  },
+  country: {
+    type: String,
+    required: true,
+  },
+  city: {
+    type: String,
+    required: true,
+  },
+  deliveryPrice: {
+    type: Number,
+    required: true,
+  },
+  estimatedDeliveryTime: {
+    type: Number,
+    required: true,
+  },
+  cuisines: [
+    {
+      type: String,
+      required: true,
     },
-    country: {
-        type: String,
-        require: true
-    }, city: {
-        type: String,
-        require: true
-    },
-    deliveryPrice: {
-        type: Number,
-        require: true
-    },
-    estimatedDeliveryTime: {
-        type: Number,
-        require: true
-    },
-    cuisines: [{
-        type: String,
-        require: true
-    }],
-    menuItems: [menuItemShema],
-    imageUrl: {
-        type: String,
-        require: true
-    },
-    lastUpdated:{
-        type: Date,
-        required: true
-    }
-})
+  ],
+  menuItems: [menuItemShema],
+  imageUrl: {
+    type: String,
+    required: true,
+  },
+  lastUpdated: {
+    type: Date,
+    required: true,
+  },
+});
 
 const Restaurant = mongoose.model("Restaurant", restaurantShema);
 

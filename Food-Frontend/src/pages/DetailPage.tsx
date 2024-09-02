@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from "sonner";
+import { useCreateCheckoutSession } from "src/api/OrderApi";
 import { useGetRestaurant } from "src/api/RestaurantListApi";
+import CheckoutButton from "src/components/CheckoutButton";
 import MenuItem from "src/components/MenuItem";
 import OrderSummary from "src/components/OrderSummary";
 import RestaurantInfo from "src/components/RestaurantInfo";
 import { AspectRatio } from "src/components/ui/aspect-ratio";
-import { Card } from "src/components/ui/card";
+import { Card, CardFooter } from "src/components/ui/card";
+import { UserFormData } from "src/forms/user-profile-form/UserProfileForm";
 import { MenuItem as MenuItemType } from "src/types";
 
 export type CartItem = {
@@ -17,13 +21,49 @@ export type CartItem = {
 const DetailPage = () => {
   const { restaurantId } = useParams();
   const { restaurant, isLoading } = useGetRestaurant(restaurantId);
+  const { createCheckoutSession, isLoading: isCheckoutLoading } =
+    useCreateCheckoutSession();
+  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+    const storeCartItems = sessionStorage.getItem(`cartItems-${restaurantId}`);
+    return storeCartItems ? JSON.parse(storeCartItems) : [];
+  });
 
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
-
+  const onCheckout = async (userFormData: UserFormData) => {
+    if (!restaurant) {
+      return;
+    }
+    const checkoutData = {
+      cartItems: cartItems.map((cartItem) => ({
+        menuItemId: cartItem._id,
+        name: cartItem.name,
+        quantity: cartItem.quantity,
+      })),
+      restaurantId: restaurant?._id,
+      deliveryDetails: {
+        name: userFormData.name,
+        addressLine1: userFormData.addressLine1,
+        city: userFormData.city,
+        country: userFormData.country,
+        email: userFormData.email as string,
+      },
+    };
+    try {
+      const data = await createCheckoutSession(checkoutData);
+      toast.success("Checkout session created successfully!");
+      window.location.href = data.url;
+    } catch (error) {
+      toast.error("Failed to create checkout session. Please try again.");
+    }
+  };
   const removeFromCart = (cartItem: CartItem) => {
     setCartItems((prevCartItems) => {
       const updatedCartItems = prevCartItems.filter(
         (item) => item._id !== cartItem._id
+      );
+
+      sessionStorage.setItem(
+        `cartItems-${restaurantId}`,
+        JSON.stringify(updatedCartItems)
       );
 
       return updatedCartItems;
@@ -53,6 +93,11 @@ const DetailPage = () => {
           },
         ];
       }
+
+      sessionStorage.setItem(
+        `cartItems-${restaurantId}`,
+        JSON.stringify(updatedCartItems)
+      );
       return updatedCartItems;
     });
   };
@@ -89,6 +134,13 @@ const DetailPage = () => {
               cartItems={cartItems}
               removeFromCart={removeFromCart}
             />
+            <CardFooter>
+              <CheckoutButton
+                onCheckout={onCheckout}
+                disabled={cartItems.length === 0}
+                isLoading={isCheckoutLoading}
+              />
+            </CardFooter>
           </Card>
         </div>
       </div>
