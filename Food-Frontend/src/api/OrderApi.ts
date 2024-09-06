@@ -27,6 +27,10 @@ export const useCreateCheckoutSession = () => {
   ) => {
     const accessToken = await getAccessTokenSilently();
 
+    console.log("Checkout Session Request:", checkoutSessionRequest);
+    console.log("Access Token:", accessToken);
+
+
     const response = await makeApiRequest(
       "/order/checkout/create-checkout-session",
       {
@@ -38,6 +42,7 @@ export const useCreateCheckoutSession = () => {
         data: JSON.stringify(checkoutSessionRequest),
       }
     );
+    console.log("API Response:", response);
     return response;
   };
 
@@ -51,14 +56,18 @@ export const useCreateCheckoutSession = () => {
       toast.success("Checkout session created successfully!");
       reset();
     },
-    onError: () => {
-      toast.error("Failed to create checkout session. Please try again.");
+    onError: (error: any) => {
+      const errorMessage =
+        error.response?.data?.message || "Failed to create checkout session.";
+      toast.error(errorMessage);
       reset();
     },
   });
 
   if (error) {
-    toast.error("Failed to create checkout session. Please try again.");
+    const errorMessage =
+      error.response?.data?.message || "Failed to create checkout session.";
+    toast.error(errorMessage);
     reset();
   }
 

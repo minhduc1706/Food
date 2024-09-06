@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
 import { MobileNav } from "./MobileNav";
 import MainNav from "./MainNav";
+import logo from '../assets/LogoFood.png'; 
 
 function Header() {
   return (
-    <div className="border-b-2 border-b-orange-500 py-6">
+    <div className="py-4">
       <div className="container mx-auto flex justify-between items-center">
         <Link
           to="/"
-          className="text-3xl font-bold tracking-tight text-orange-500"
+          className="font-bold tracking-tight text-orange-500"
         >
-          MernEats.com
+          <img src={logo} alt="Logo" className="w-24 h-auto" />
         </Link>
 
         <div className="md:hidden">

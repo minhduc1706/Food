@@ -18,6 +18,10 @@ export type CartItem = {
   price: number;
   quantity: number;
 };
+
+type DataSession = {
+  url: string;
+};
 const DetailPage = () => {
   const { restaurantId } = useParams();
   const { restaurant, isLoading } = useGetRestaurant(restaurantId);
@@ -47,14 +51,18 @@ const DetailPage = () => {
         email: userFormData.email as string,
       },
     };
+
+    let data;
     try {
-      const data = await createCheckoutSession(checkoutData);
+      data = await createCheckoutSession(checkoutData);
       toast.success("Checkout session created successfully!");
       window.location.href = data.url;
     } catch (error) {
-      toast.error("Failed to create checkout session. Please try again.");
+      console.log(data);
+      toast.error("Failed to create checkout session. Please try again.0");
     }
   };
+
   const removeFromCart = (cartItem: CartItem) => {
     setCartItems((prevCartItems) => {
       const updatedCartItems = prevCartItems.filter(

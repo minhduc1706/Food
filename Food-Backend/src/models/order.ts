@@ -14,7 +14,7 @@ const orderShema = new mongoose.Schema({
   },
   cartItems: [
     {
-      menuItemid: { type: String, required: true },
+      menuItemId: { type: String, required: true },
       quantity: { type: Number, required: true },
       name: { type: String, required: true },
     },

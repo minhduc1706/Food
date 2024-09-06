@@ -40,7 +40,7 @@ const SortOptionDropDown = ({ onChange, sortOption }: Props) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="cursor-pointer" asChild>
-        <Button variant="outline" className="w-full">
+        <Button variant="outline">
           Sort by: {selectedSortLabel}
           <ChevronDown className="h-5 w-5 text-gray-500" />
         </Button>

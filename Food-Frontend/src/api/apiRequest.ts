@@ -10,6 +10,7 @@ export const  makeApiRequest = async <T>(
     const response: AxiosResponse<T> = await axios({
       url: `${API_BASE_URL}${url}`, 
       ...option,
+      data: option?.data
     });
 
     console.log("API Response:", response);

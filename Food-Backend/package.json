@@ -4,7 +4,9 @@
   "description": "",
   "main": "./src/index.ts",
   "scripts": {
-    "dev": "nodemon"
+    "dev": "concurrently \"nodemon\" \"npm run stripe\" \"npm run start:frontend\"",
+    "start:frontend": "cd ../Food-Frontend && npm run dev",
+    "stripe": "stripe listen --forward-to localhost:4000/api/v1/order/checkout/webhook"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +30,7 @@
     "@types/express": "^4.17.21",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.14.9",
+    "concurrently": "^8.2.2",
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.2"

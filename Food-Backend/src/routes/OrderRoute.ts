@@ -11,5 +11,8 @@ router.post(
   OrderController.CreateCheckoutSession
 );
 
-
+router.post(
+  "/checkout/webhook",
+  OrderController.stripeWebHookHandler
+);
 export default router;
