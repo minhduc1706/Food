@@ -8,17 +8,18 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import { CircleUserRound, LogOut } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useFetchCurrentUser } from "src/api/UserApi";
 
 const UsernameMemu = () => {
   const { user, logout } = useAuth0();
-
+  const {currentUser} = useFetchCurrentUser();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button className="flex items-center px-3 py-2 rounded-md bg-white shadow-md hover:bg-orange-100 gap-2 transition duration-200 ease-in-out">
           <CircleUserRound className="text-orange-500" />
           <span className="text-sm text-gray-700 font-semibold">
-            {user?.email}
+            {currentUser && user?.email || user?.nickname}
           </span>
         </button>
       </DropdownMenuTrigger>

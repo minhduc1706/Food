@@ -8,12 +8,11 @@ const createCurrentUser = async (
 ) => {
   try {
     const { auth0Id } = req.body;
-    const existingUser = await User.findOne({ auth0Id });
+
+    const existingUser = await checkUserExists(auth0Id);
 
     if (existingUser) {
-      const error: any = new Error("User already exists");
-      error.status = 409;
-      return next(error);
+      return res.status(204).end();
     }
 
     const newUser = new User(req.body);
@@ -69,6 +68,20 @@ const getCurrentUser = async (
     res.status(200).json(currentUser);
   } catch (error) {
     next(error);
+  }
+};
+
+const checkUserExists = async (auth0Id: string): Promise<boolean> => {
+  try {
+    const existingUser = await User.findOne({ auth0Id }).exec();
+
+    return !!existingUser;
+  } catch (error) {
+    console.error(
+      "Error checking user existence:",
+      (error as Error).message || error
+    );
+    throw new Error("Error checking user existence");
   }
 };
 

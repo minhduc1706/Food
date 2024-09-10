@@ -19,7 +19,6 @@ type updateUserRequest = {
 
 export const useFetchCurrentUser = () => {
   const { getAccessTokenSilently } = useAuth0();
-
   const fetchUserData = useCallback(async (): Promise<User> => {
     const accessToken = await getAccessTokenSilently();
     return await makeApiRequest<User>("/users", {
@@ -55,11 +54,9 @@ export const useFetchCurrentUser = () => {
 
 export const useCreateUser = () => {
   const { getAccessTokenSilently } = useAuth0();
-
   const createUserRequest = async (user: CreateUserRequest) => {
     const accessToken = await getAccessTokenSilently();
-
-    await makeApiRequest<void>("/users", {
+    const response = await makeApiRequest<void>("/users", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -67,6 +64,7 @@ export const useCreateUser = () => {
       },
       data: user,
     });
+    return response;
   };
 
   const {
