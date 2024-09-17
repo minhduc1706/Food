@@ -21,9 +21,7 @@ const getRestaurant = async (
     const restaurant = await Restaurant.findOne({ user: req.userId });
 
     if (!restaurant) {
-      const error: any = new Error("Restaurant not found");
-      error.statusCode = 404;
-      throw error;
+      return res.status(200).json({ message: "Restaurant not found" });
     }
 
     res.status(200).json(restaurant);

@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { Restaurant } from "src/types";
 import { makeApiRequest } from "./ApiRequest";
 import { useCallback } from "react";
+import axios from "axios";
 
 export const useGetRestaurant = () => {
   const { getAccessTokenSilently } = useAuth0();
@@ -27,10 +28,18 @@ export const useGetRestaurant = () => {
     "getRestaurantRequest",
     getRestaurantRequest,
     {
-      onError: () => {
-        toast.error(
-          "Unable to load your profile at this moment. Please try again later."
-        );
+      onError: (error) => {
+        if (axios.isAxiosError(error)) {
+          if (error.response?.data?.message === "Restaurant not found") {
+            toast.info("You don't have a restaurant yet. Please create a new one!");
+          } else {
+            toast.error(
+              "Unable to load your profile at this moment. Please try again later."
+            );
+          }
+        } else {
+          toast.error("An unexpected error occurred.");
+        }
       },
     }
   );
@@ -70,10 +79,12 @@ export const useCreateRestaurant = () => {
         toast.success("Restaurant created successfully!");
         queryClient.invalidateQueries("getRestaurantRequest");
       },
-      onError: (error: any) => {
-        const errorMessage =
-          error.response?.data?.message || "Failed to create restaurant";
-        toast.error(errorMessage);
+      onError: (error) => {
+        if (axios.isAxiosError(error)) {
+          const errorMessage =
+            error.response?.data?.message || "Failed to create restaurant";
+          toast.error(errorMessage);
+        }
       },
     }
   );

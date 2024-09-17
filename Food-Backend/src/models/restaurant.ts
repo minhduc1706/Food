@@ -55,6 +55,10 @@ const restaurantShema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  coordinates: {
+    lat: Number,
+    lon: Number,
+  },
 });
 
 const Restaurant = mongoose.model("Restaurant", restaurantShema);

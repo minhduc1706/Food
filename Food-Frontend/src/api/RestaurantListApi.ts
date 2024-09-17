@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { Restaurant, RestaurantSearchResponse } from "src/types";
 import { SearchState } from "src/pages/SearchPage";
 
-export const useGetRestaurant = (restaurantId?: string) => {
+export const useGetRestaurantById = (restaurantId?: string) => {
   const getRestaurantByIdRequest = async (): Promise<Restaurant> => {
     return await makeApiRequest<Restaurant>(`/restaurantsList/${restaurantId}`);
   };
@@ -16,7 +16,7 @@ export const useGetRestaurant = (restaurantId?: string) => {
       staleTime: 5 * 60 * 1000,
       cacheTime: 10 * 60 * 1000,
       onError: (err) => {
-        console.error('Error fetching restaurant:', err);
+        console.error("Error fetching restaurant:", err);
         toast.error(
           "An error occurred while fetching the restaurant. Please try again later."
         );
@@ -66,3 +66,37 @@ export const useSearchRestaurants = (
     isLoading,
   };
 };
+
+export const useGetAllRestaurant = () => {
+  const getAllRestaurant = async (): Promise<Restaurant[]> => {
+    return await makeApiRequest<Restaurant[]>(
+      "/restaurantsList"
+    );
+  };
+
+  const {
+    data: restaurants,
+    isLoading,
+    error,
+  } = useQuery("getAllRestaurant", getAllRestaurant, {
+    staleTime: 5 * 60 * 1000,
+    cacheTime: 10 * 60 * 1000,
+    onError: () => {
+      toast.error(
+        "An error occurred while fetching the restaurant list. Please try again later."
+      );
+    },
+  });
+
+  if (error) {
+    toast.error("Failed to fetch restaurant list.");
+  }
+
+  return {
+    restaurants,
+    isLoading,
+  };
+};
+
+
+

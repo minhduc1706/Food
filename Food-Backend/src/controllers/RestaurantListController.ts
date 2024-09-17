@@ -1,8 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import Restaurant from "../models/restaurant";
-import mongoose from "mongoose";
 
-const getRestaurant = async (
+const getRestaurantById = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -30,7 +29,6 @@ const searchRestaurants = async (
 ) => {
   try {
     const city = req.params.city;
-
     const searchQuery = (req.query.searchQuery as string) || "";
     const selectedCuisines = (req.query.selectedCuisines as string) || "";
     const sortOption = (req.query.sortOption as string) || "lastUpdated";
@@ -59,12 +57,13 @@ const searchRestaurants = async (
 
       query["cuisines"] = { $all: cuisinesArray };
     }
-
+    
+    let searchQueryRegex;
     if (searchQuery) {
-      const searchRegex = new RegExp(searchQuery, "i");
+      searchQueryRegex = new RegExp(searchQuery, "i");
       query["$or"] = [
-        { restaurantName: searchRegex },
-        { cuisines: { $in: [searchRegex] } },
+        { restaurantName: searchQueryRegex },
+        { cuisines: { $in: [searchQueryRegex] } },
       ];
     }
 
@@ -90,8 +89,25 @@ const searchRestaurants = async (
 
     res.json(response);
   } catch (error) {
+    console.error("Error in searchRestaurants:", error); // Log ra lỗi chi tiết
     next(error);
   }
 };
 
-export default { searchRestaurants, getRestaurant };
+const getAllRestaurant = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const restaurants = await Restaurant.find();
+    if (restaurants.length === 0) {
+      return res.status(404).json({ message: "No restaurants found" });
+    }
+
+    res.json(restaurants);
+  } catch (error) {
+    next(error);
+  }
+};
+export default { searchRestaurants, getRestaurantById, getAllRestaurant };

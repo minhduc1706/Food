@@ -1,332 +1,342 @@
 [
   {
-    "_id": "66bc8fcb971212cc5f52f226",
-    "user": "66bc8e8c971212cc5f52f1ff",
-    "restaurantName": "Chicago Diner",
-    "country": "USA",
-    "city": "Chicago",
-    "deliveryPrice": 250,
-    "estimatedDeliveryTime": 30,
-    "cuisines": ["American", "Vegetarian"],
+    "_id": "66dae829d0070a90fc578ca1",
+    "user": "66bc8e8c971212cc5f52f1fa1",
+    "restaurantName": "Restaurant 1",
+    "country": "Vietnam",
+    "city": "Ho Chi Minh",
+    "deliveryPrice": 30,
+    "estimatedDeliveryTime": 300,
+    "cuisines": ["Vietnamese", "Street Food"],
     "menuItems": [
-      {
-        "name": "Veggie Burger",
-        "price": 1200,
-        "_id": "66bc8fcb971212cc5f52f227"
-      },
-      {
-        "imageUrl": "http://example.com/image1.jpg",
-        "lastUpdated": "2024-08-14T11:06:51.689+00:00",
-        "__v": 0
-      }
-    ]
+      {"_id": "66dae829d0070a90fc578cb1", "name": "Pho", "price": 60},
+      {"_id": "66dae829d0070a90fc578cb2", "name": "Banh Mi", "price": 20}
+    ],
+    "imageUrl": "https://via.placeholder.com/500",
+    "lastUpdated": "2024-09-15T11:31:53.190+00:00",
+    "__v": 0
   },
   {
-    "_id": "66bc8fcb971212cc5f52f228",
-    "user": "66bc8e8c971212cc5f52f1ff",
-    "restaurantName": "Deep Dish Pizza",
-    "country": "USA",
-    "city": "Chicago",
-    "deliveryPrice": 300,
-    "estimatedDeliveryTime": 40,
-    "cuisines": ["Pizza", "Italian"],
+    "_id": "66dae829d0070a90fc578ca2",
+    "user": "66bc8e8c971212cc5f52f1fa2",
+    "restaurantName": "Restaurant 2",
+    "country": "Vietnam",
+    "city": "Ho Chi Minh",
+    "deliveryPrice": 35,
+    "estimatedDeliveryTime": 320,
+    "cuisines": ["Vietnamese", "Seafood"],
     "menuItems": [
-      {
-        "name": "Deep Dish Pizza",
-        "price": 1500,
-        "_id": "66bc8fcb971212cc5f52f229"
-      },
-      {
-        "imageUrl": "http://example.com/image2.jpg",
-        "lastUpdated": "2024-08-14T11:06:51.689+00:00",
-        "__v": 0
-      }
-    ]
+      {"_id": "66dae829d0070a90fc578cb3", "name": "Seafood Soup", "price": 70},
+      {"_id": "66dae829d0070a90fc578cb4", "name": "Spring Rolls", "price": 25}
+    ],
+    "imageUrl": "https://via.placeholder.com/500",
+    "lastUpdated": "2024-09-15T11:31:53.190+00:00",
+    "__v": 0
   },
   {
-    "_id": "66bc8fcb971212cc5f52f22a",
-    "user": "66bc8e8c971212cc5f52f1ff",
-    "restaurantName": "Windy City BBQ",
+    "_id": "66dae829d0070a90fc578ca3",
+    "user": "66bc8e8c971212cc5f52f1fa3",
+    "restaurantName": "Restaurant 3",
     "country": "USA",
-    "city": "Chicago",
-    "deliveryPrice": 280,
-    "estimatedDeliveryTime": 35,
-    "cuisines": ["BBQ", "American"],
+    "city": "New York",
+    "deliveryPrice": 40,
+    "estimatedDeliveryTime": 210,
+    "cuisines": ["American", "Burgers"],
     "menuItems": [
-      {
-        "name": "BBQ Ribs",
-        "price": 1400,
-        "_id": "66bc8fcb971212cc5f52f22b"
-      },
-      {
-        "imageUrl": "http://example.com/image3.jpg",
-        "lastUpdated": "2024-08-14T11:06:51.689+00:00",
-        "__v": 0
-      }
-    ]
+      {"_id": "66dae829d0070a90fc578cb5", "name": "Burger Deluxe", "price": 80},
+      {"_id": "66dae829d0070a90fc578cb6", "name": "Onion Rings", "price": 25}
+    ],
+    "imageUrl": "https://via.placeholder.com/500",
+    "lastUpdated": "2024-09-15T11:31:53.190+00:00",
+    "__v": 0
   },
   {
-    "_id": "66bc8fcb971212cc5f52f22c",
-    "user": "66bc8e8c971212cc5f52f1ff",
-    "restaurantName": "Chicago Sushi",
+    "_id": "66dae829d0070a90fc578ca4",
+    "user": "66bc8e8c971212cc5f52f1fa4",
+    "restaurantName": "Restaurant 4",
     "country": "USA",
-    "city": "Chicago",
-    "deliveryPrice": 320,
-    "estimatedDeliveryTime": 25,
-    "cuisines": ["Sushi", "Japanese"],
+    "city": "New York",
+    "deliveryPrice": 50,
+    "estimatedDeliveryTime": 180,
+    "cuisines": ["American", "Desserts"],
     "menuItems": [
-      {
-        "name": "Sushi Rolls",
-        "price": 1600,
-        "_id": "66bc8fcb971212cc5f52f22d"
-      },
-      {
-        "imageUrl": "http://example.com/image4.jpg",
-        "lastUpdated": "2024-08-14T11:06:51.689+00:00",
-        "__v": 0
-      }
-    ]
+      {"_id": "66dae829d0070a90fc578cb7", "name": "Chocolate Cake", "price": 60},
+      {"_id": "66dae829d0070a90fc578cb8", "name": "Apple Pie", "price": 40}
+    ],
+    "imageUrl": "https://via.placeholder.com/500",
+    "lastUpdated": "2024-09-15T11:31:53.190+00:00",
+    "__v": 0
   },
   {
-    "_id": "66bc8fcb971212cc5f52f22e",
-    "user": "66bc8e8c971212cc5f52f1ff",
-    "restaurantName": "The Chicago Steakhouse",
-    "country": "USA",
-    "city": "Chicago",
-    "deliveryPrice": 350,
-    "estimatedDeliveryTime": 50,
-    "cuisines": ["Steakhouse", "American"],
+    "_id": "66dae829d0070a90fc578ca5",
+    "user": "66bc8e8c971212cc5f52f1fa5",
+    "restaurantName": "Restaurant 5",
+    "country": "France",
+    "city": "Paris",
+    "deliveryPrice": 25,
+    "estimatedDeliveryTime": 260,
+    "cuisines": ["French", "Pastries"],
     "menuItems": [
-      {
-        "name": "Ribeye Steak",
-        "price": 1800,
-        "_id": "66bc8fcb971212cc5f52f22f"
-      },
-      {
-        "imageUrl": "http://example.com/image5.jpg",
-        "lastUpdated": "2024-08-14T11:06:51.689+00:00",
-        "__v": 0
-      }
-    ]
+      {"_id": "66dae829d0070a90fc578cb9", "name": "Macarons", "price": 20},
+      {"_id": "66dae829d0070a90fc578cb0", "name": "Quiche", "price": 50}
+    ],
+    "imageUrl": "https://via.placeholder.com/500",
+    "lastUpdated": "2024-09-15T11:31:53.190+00:00",
+    "__v": 0
   },
   {
-    "_id": "66bc8fcb971212cc5f52f230",
-    "user": "66bc8e8c971212cc5f52f1ff",
-    "restaurantName": "Chicago Tacos",
-    "country": "USA",
-    "city": "Chicago",
-    "deliveryPrice": 220,
-    "estimatedDeliveryTime": 20,
-    "cuisines": ["Mexican", "Tacos"],
+    "_id": "66dae829d0070a90fc578ca6",
+    "user": "66bc8e8c971212cc5f52f1fa6",
+    "restaurantName": "Restaurant 6",
+    "country": "France",
+    "city": "Paris",
+    "deliveryPrice": 30,
+    "estimatedDeliveryTime": 240,
+    "cuisines": ["French", "Bistro"],
     "menuItems": [
-      {
-        "name": "Beef Tacos",
-        "price": 1000,
-        "_id": "66bc8fcb971212cc5f52f231"
-      },
-      {
-        "imageUrl": "http://example.com/image6.jpg",
-        "lastUpdated": "2024-08-14T11:06:51.689+00:00",
-        "__v": 0
-      }
-    ]
+      {"_id": "66dae829d0070a90fc578cb2", "name": "Beef Bourguignon", "price": 80},
+      {"_id": "66dae829d0070a90fc578cb1", "name": "Ratatouille", "price": 45}
+    ],
+    "imageUrl": "https://via.placeholder.com/500",
+    "lastUpdated": "2024-09-15T11:31:53.190+00:00",
+    "__v": 0
   },
   {
-    "_id": "66bc8fcb971212cc5f52f232",
-    "user": "66bc8e8c971212cc5f52f1ff",
-    "restaurantName": "Chicago Crepes",
-    "country": "USA",
-    "city": "Chicago",
-    "deliveryPrice": 240,
-    "estimatedDeliveryTime": 30,
-    "cuisines": ["French", "Desserts"],
+    "_id": "66dae829d0070a90fc578ca7",
+    "user": "66bc8e8c971212cc5f52f1fa7",
+    "restaurantName": "Restaurant 7",
+    "country": "Vietnam",
+    "city": "Hanoi",
+    "deliveryPrice": 28,
+    "estimatedDeliveryTime": 290,
+    "cuisines": ["Vietnamese", "Street Food"],
     "menuItems": [
-      {
-        "name": "Strawberry Crepes",
-        "price": 1300,
-        "_id": "66bc8fcb971212cc5f52f233"
-      },
-      {
-        "imageUrl": "http://example.com/image7.jpg",
-        "lastUpdated": "2024-08-14T11:06:51.689+00:00",
-        "__v": 0
-      }
-    ]
+      {"_id": "66dae829d0070a90fc578cb3", "name": "Bun Cha", "price": 45},
+      {"_id": "66dae829d0070a90fc578cb4", "name": "Nem Ran", "price": 25}
+    ],
+    "imageUrl": "https://via.placeholder.com/500",
+    "lastUpdated": "2024-09-15T11:31:53.190+00:00",
+    "__v": 0
   },
   {
-    "_id": "66bc8fcb971212cc5f52f234",
-    "user": "66bc8e8c971212cc5f52f1ff",
-    "restaurantName": "Chicago Bagels",
+    "_id": "66dae829d0070a90fc578ca8",
+    "user": "66bc8e8c971212cc5f52f1fa8",
+    "restaurantName": "Restaurant 8",
     "country": "USA",
-    "city": "Chicago",
-    "deliveryPrice": 200,
-    "estimatedDeliveryTime": 15,
-    "cuisines": ["Bagels", "American"],
+    "city": "San Francisco",
+    "deliveryPrice": 55,
+    "estimatedDeliveryTime": 210,
+    "cuisines": ["American", "Seafood"],
     "menuItems": [
-      {
-        "name": "Bagel with Cream Cheese",
-        "price": 600,
-        "_id": "66bc8fcb971212cc5f52f235"
-      },
-      {
-        "imageUrl": "http://example.com/image8.jpg",
-        "lastUpdated": "2024-08-14T11:06:51.689+00:00",
-        "__v": 0
-      }
-    ]
+      {"_id": "66dae829d0070a90fc578cb5", "name": "Clam Chowder", "price": 90},
+      {"_id": "66dae829d0070a90fc578cb6", "name": "Crab Cakes", "price": 75}
+    ],
+    "imageUrl": "https://via.placeholder.com/500",
+    "lastUpdated": "2024-09-15T11:31:53.190+00:00",
+    "__v": 0
   },
   {
-    "_id": "66bc8fcb971212cc5f52f236",
-    "user": "66bc8e8c971212cc5f52f1ff",
-    "restaurantName": "Chicago Vegan",
-    "country": "USA",
-    "city": "Chicago",
-    "deliveryPrice": 270,
-    "estimatedDeliveryTime": 30,
-    "cuisines": ["Vegan", "Vegetarian"],
+    "_id": "66dae829d0070a90fc578ca9",
+    "user": "66bc8e8c971212cc5f52f1fa9",
+    "restaurantName": "Restaurant 9",
+    "country": "Canada",
+    "city": "Toronto",
+    "deliveryPrice": 40,
+    "estimatedDeliveryTime": 220,
+    "cuisines": ["Canadian", "Burgers"],
     "menuItems": [
-      {
-        "name": "Vegan Burrito",
-        "price": 1100,
-        "_id": "66bc8fcb971212cc5f52f237"
-      },
-      {
-        "imageUrl": "http://example.com/image9.jpg",
-        "lastUpdated": "2024-08-14T11:06:51.689+00:00",
-        "__v": 0
-      }
-    ]
+      {"_id": "66dae829d0070a90fc578cb7", "name": "Poutine", "price": 65},
+      {"_id": "66dae829d0070a90fc578cb8", "name": "Beef Burger", "price": 50}
+    ],
+    "imageUrl": "https://via.placeholder.com/500",
+    "lastUpdated": "2024-09-15T11:31:53.190+00:00",
+    "__v": 0
   },
   {
-    "_id": "66bc8fcb971212cc5f52f238",
-    "user": "66bc8e8c971212cc5f52f1ff",
-    "restaurantName": "Chicago Pho",
-    "country": "USA",
-    "city": "Chicago",
-    "deliveryPrice": 290,
-    "estimatedDeliveryTime": 25,
-    "cuisines": ["Vietnamese", "Pho"],
+    "_id": "66dae829d0070a90fc578caa",
+    "user": "66bc8e8c971212cc5f52f1faa",
+    "restaurantName": "Restaurant 10",
+    "country": "Canada",
+    "city": "Toronto",
+    "deliveryPrice": 45,
+    "estimatedDeliveryTime": 250,
+    "cuisines": ["Canadian", "Desserts"],
     "menuItems": [
-      {
-        "name": "Beef Pho",
-        "price": 1400,
-        "_id": "66bc8fcb971212cc5f52f239"
-      },
-      {
-        "imageUrl": "http://example.com/image10.jpg",
-        "lastUpdated": "2024-08-14T11:06:51.689+00:00",
-        "__v": 0
-      }
-    ]
+      {"_id": "66dae829d0070a90fc578cb9", "name": "Maple Syrup Pancakes", "price": 55},
+      {"_id": "66dae829d0070a90fc578cb0", "name": "Cheesecake", "price": 70}
+    ],
+    "imageUrl": "https://via.placeholder.com/500",
+    "lastUpdated": "2024-09-15T11:31:53.190+00:00",
+    "__v": 0
   },
   {
-    "_id": "66bc8fcb971212cc5f52f23a",
-    "user": "66bc8e8c971212cc5f52f1ff",
-    "restaurantName": "Chicago Indian",
-    "country": "USA",
-    "city": "Chicago",
-    "deliveryPrice": 310,
-    "estimatedDeliveryTime": 35,
-    "cuisines": ["Indian", "Spicy"],
+    "_id": "66dae829d0070a90fc578cab",
+    "user": "66bc8e8c971212cc5f52f1fab",
+    "restaurantName": "Restaurant 11",
+    "country": "Germany",
+    "city": "Berlin",
+    "deliveryPrice": 33,
+    "estimatedDeliveryTime": 280,
+    "cuisines": ["German", "Burgers"],
     "menuItems": [
-      {
-        "name": "Chicken Curry",
-        "price": 1500,
-        "_id": "66bc8fcb971212cc5f52f23b"
-      },
-      {
-        "imageUrl": "http://example.com/image11.jpg",
-        "lastUpdated": "2024-08-14T11:06:51.689+00:00",
-        "__v": 0
-      }
-    ]
+      {"_id": "66dae829d0070a90fc578cb3", "name": "Bratwurst", "price": 60},
+      {"_id": "66dae829d0070a90fc578cb4", "name": "Sauerkraut", "price": 20}
+    ],
+    "imageUrl": "https://via.placeholder.com/500",
+    "lastUpdated": "2024-09-15T11:31:53.190+00:00",
+    "__v": 0
   },
   {
-    "_id": "66bc8fcb971212cc5f52f23c",
-    "user": "66bc8e8c971212cc5f52f1ff",
-    "restaurantName": "Chicago Bakery",
-    "country": "USA",
-    "city": "Chicago",
-    "deliveryPrice": 230,
-    "estimatedDeliveryTime": 20,
-    "cuisines": ["Bakery", "Desserts"],
+    "_id": "66dae829d0070a90fc578cac",
+    "user": "66bc8e8c971212cc5f52f1fac",
+    "restaurantName": "Restaurant 12",
+    "country": "Germany",
+    "city": "Berlin",
+    "deliveryPrice": 38,
+    "estimatedDeliveryTime": 290,
+    "cuisines": ["German", "Desserts"],
     "menuItems": [
-      {
-        "name": "Chocolate Cake",
-        "price": 1200,
-        "_id": "66bc8fcb971212cc5f52f23d"
-      },
-      {
-        "imageUrl": "http://example.com/image12.jpg",
-        "lastUpdated": "2024-08-14T11:06:51.689+00:00",
-        "__v": 0
-      }
-    ]
+      {"_id": "66dae829d0070a90fc578cb5", "name": "Black Forest Cake", "price": 75},
+      {"_id": "66dae829d0070a90fc578cb6", "name": "Apfelstrudel", "price": 50}
+    ],
+    "imageUrl": "https://via.placeholder.com/500",
+    "lastUpdated": "2024-09-15T11:31:53.190+00:00",
+    "__v": 0
   },
   {
-    "_id": "66bc8fcb971212cc5f52f23e",
-    "user": "66bc8e8c971212cc5f52f1ff",
-    "restaurantName": "Chicago Greek",
-    "country": "USA",
-    "city": "Chicago",
-    "deliveryPrice": 280,
-    "estimatedDeliveryTime": 30,
-    "cuisines": ["Greek", "Mediterranean"],
+    "_id": "66dae829d0070a90fc578cad",
+    "user": "66bc8e8c971212cc5f52f1fad",
+    "restaurantName": "Restaurant 13",
+    "country": "Japan",
+    "city": "Tokyo",
+    "deliveryPrice": 50,
+    "estimatedDeliveryTime": 240,
+    "cuisines": ["Japanese", "Sushi"],
     "menuItems": [
-      {
-        "name": "Gyro Plate",
-        "price": 1300,
-        "_id": "66bc8fcb971212cc5f52f23f"
-      },
-      {
-        "imageUrl": "http://example.com/image13.jpg",
-        "lastUpdated": "2024-08-14T11:06:51.689+00:00",
-        "__v": 0
-      }
-    ]
+      {"_id": "66dae829d0070a90fc578cb7", "name": "Sushi Set", "price": 90},
+      {"_id": "66dae829d0070a90fc578cb8", "name": "Ramen", "price": 70}
+    ],
+    "imageUrl": "https://via.placeholder.com/500",
+    "lastUpdated": "2024-09-15T11:31:53.190+00:00",
+    "__v": 0
   },
   {
-    "_id": "66bc8fcb971212cc5f52f240",
-    "user": "66bc8e8c971212cc5f52f1ff",
-    "restaurantName": "Chicago Italian",
-    "country": "USA",
-    "city": "Chicago",
-    "deliveryPrice": 300,
-    "estimatedDeliveryTime": 35,
+    "_id": "66dae829d0070a90fc578cae",
+    "user": "66bc8e8c971212cc5f52f1fae",
+    "restaurantName": "Restaurant 14",
+    "country": "Japan",
+    "city": "Tokyo",
+    "deliveryPrice": 45,
+    "estimatedDeliveryTime": 260,
+    "cuisines": ["Japanese", "Ramen"],
+    "menuItems": [
+      {"_id": "66dae829d0070a90fc578cb9", "name": "Miso Ramen", "price": 65},
+      {"_id": "66dae829d0070a90fc578cb0", "name": "Tempura", "price": 55}
+    ],
+    "imageUrl": "https://via.placeholder.com/500",
+    "lastUpdated": "2024-09-15T11:31:53.190+00:00",
+    "__v": 0
+  },
+  {
+    "_id": "66dae829d0070a90fc578caf",
+    "user": "66bc8e8c971212cc5f52f1faf",
+    "restaurantName": "Restaurant 15",
+    "country": "Spain",
+    "city": "Madrid",
+    "deliveryPrice": 35,
+    "estimatedDeliveryTime": 290,
+    "cuisines": ["Spanish", "Tapas"],
+    "menuItems": [
+      {"_id": "66dae829d0070a90fc578cb3", "name": "Patatas Bravas", "price": 30},
+      {"_id": "66dae829d0070a90fc578cb4", "name": "Paella", "price": 70}
+    ],
+    "imageUrl": "https://via.placeholder.com/500",
+    "lastUpdated": "2024-09-15T11:31:53.190+00:00",
+    "__v": 0
+  },
+  {
+    "_id": "66dae829d0070a90fc578cb0",
+    "user": "66bc8e8c971212cc5f52f1fb0",
+    "restaurantName": "Restaurant 16",
+    "country": "Spain",
+    "city": "Barcelona",
+    "deliveryPrice": 40,
+    "estimatedDeliveryTime": 300,
+    "cuisines": ["Spanish", "Seafood"],
+    "menuItems": [
+      {"_id": "66dae829d0070a90fc578cb5", "name": "Seafood Paella", "price": 90},
+      {"_id": "66dae829d0070a90fc578cb6", "name": "Gambas al Ajillo", "price": 60}
+    ],
+    "imageUrl": "https://via.placeholder.com/500",
+    "lastUpdated": "2024-09-15T11:31:53.190+00:00",
+    "__v": 0
+  },
+  {
+    "_id": "66dae829d0070a90fc578cb1",
+    "user": "66bc8e8c971212cc5f52f1fb1",
+    "restaurantName": "Restaurant 17",
+    "country": "Italy",
+    "city": "Rome",
+    "deliveryPrice": 40,
+    "estimatedDeliveryTime": 220,
+    "cuisines": ["Italian", "Pizza"],
+    "menuItems": [
+      {"_id": "66dae829d0070a90fc578cb7", "name": "Margherita Pizza", "price": 70},
+      {"_id": "66dae829d0070a90fc578cb8", "name": "Carbonara", "price": 60}
+    ],
+    "imageUrl": "https://via.placeholder.com/500",
+    "lastUpdated": "2024-09-15T11:31:53.190+00:00",
+    "__v": 0
+  },
+  {
+    "_id": "66dae829d0070a90fc578cb2",
+    "user": "66bc8e8c971212cc5f52f1fb2",
+    "restaurantName": "Restaurant 18",
+    "country": "Italy",
+    "city": "Rome",
+    "deliveryPrice": 35,
+    "estimatedDeliveryTime": 240,
     "cuisines": ["Italian", "Pasta"],
     "menuItems": [
-      {
-        "name": "Spaghetti Carbonara",
-        "price": 1400,
-        "_id": "66bc8fcb971212cc5f52f241"
-      },
-      {
-        "imageUrl": "http://example.com/image14.jpg",
-        "lastUpdated": "2024-08-14T11:06:51.689+00:00",
-        "__v": 0
-      }
-    ]
+      {"_id": "66dae829d0070a90fc578cb9", "name": "Lasagna", "price": 75},
+      {"_id": "66dae829d0070a90fc578cb0", "name": "Fettuccine Alfredo", "price": 65}
+    ],
+    "imageUrl": "https://via.placeholder.com/500",
+    "lastUpdated": "2024-09-15T11:31:53.190+00:00",
+    "__v": 0
   },
   {
-    "_id": "66bc8fcb971212cc5f52f242",
-    "user": "66bc8e8c971212cc5f52f1ff",
-    "restaurantName": "Chicago BBQ",
-    "country": "USA",
-    "city": "Chicago",
-    "deliveryPrice": 290,
-    "estimatedDeliveryTime": 40,
-    "cuisines": ["BBQ", "American"],
+    "_id": "66dae829d0070a90fc578cb3",
+    "user": "66bc8e8c971212cc5f52f1fb3",
+    "restaurantName": "Restaurant 19",
+    "country": "South Korea",
+    "city": "Seoul",
+    "deliveryPrice": 40,
+    "estimatedDeliveryTime": 260,
+    "cuisines": ["Korean", "Barbecue"],
     "menuItems": [
-      {
-        "name": "BBQ Chicken",
-        "price": 1300,
-        "_id": "66bc8fcb971212cc5f52f243"
-      },
-      {
-        "imageUrl": "http://example.com/image15.jpg",
-        "lastUpdated": "2024-08-14T11:06:51.689+00:00",
-        "__v": 0
-      }
-    ]
+      {"_id": "66dae829d0070a90fc578cb7", "name": "Kimchi BBQ", "price": 80},
+      {"_id": "66dae829d0070a90fc578cb8", "name": "Bibimbap", "price": 55}
+    ],
+    "imageUrl": "https://via.placeholder.com/500",
+    "lastUpdated": "2024-09-15T11:31:53.190+00:00",
+    "__v": 0
+  },
+  {
+    "_id": "66dae829d0070a90fc578cb4",
+    "user": "66bc8e8c971212cc5f52f1fb4",
+    "restaurantName": "Restaurant 20",
+    "country": "South Korea",
+    "city": "Seoul",
+    "deliveryPrice": 45,
+    "estimatedDeliveryTime": 270,
+    "cuisines": ["Korean", "Noodles"],
+    "menuItems": [
+      {"_id": "66dae829d0070a90fc578cb9", "name": "Jajangmyeon", "price": 65},
+      {"_id": "66dae829d0070a90fc578cb0", "name": "Tteokbokki", "price": 50}
+    ],
+    "imageUrl": "https://via.placeholder.com/500",
+    "lastUpdated": "2024-09-15T11:31:53.190+00:00",
+    "__v": 0
   }
 ]

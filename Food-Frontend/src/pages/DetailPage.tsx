@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "sonner";
 import { useCreateCheckoutSession } from "src/api/OrderApi";
-import { useGetRestaurant } from "src/api/RestaurantListApi";
+import { useGetRestaurantById} from "src/api/RestaurantListApi";
 import CheckoutButton from "src/components/CheckoutButton";
 import MenuItem from "src/components/MenuItem";
 import OrderSummary from "src/components/OrderSummary";
@@ -24,7 +24,7 @@ type DataSession = {
 };
 const DetailPage = () => {
   const { restaurantId } = useParams();
-  const { restaurant, isLoading } = useGetRestaurant(restaurantId);
+  const { restaurant, isLoading } = useGetRestaurantById(restaurantId);
   const { createCheckoutSession, isLoading: isCheckoutLoading } =
     useCreateCheckoutSession();
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
