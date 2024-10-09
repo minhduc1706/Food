@@ -13,11 +13,11 @@ const HomePage = () => {
     });
   };
 
-  const {restaurants} = useGetAllRestaurant();
+  const { restaurants } = useGetAllRestaurant();
 
   const allCity = new Set<string>();
-  
-  restaurants?.forEach(r => {
+
+  restaurants?.forEach((r) => {
     allCity.add(r.city);
   });
   const uniqueCities = Array.from(allCity);
@@ -27,7 +27,7 @@ const HomePage = () => {
       <div className="md:px-32 bg-white rounded-lg shadow-md py-8 flex flex-col gap-5 text-center -mt-16">
         <h1 className="md:text-3xl lg:text-5xl font-bold tracking-tight text-orange-600">
           Tuck into a takeaway today
-        </h1>
+        </h1> 
         <span className="text-xl">Food is just a click away!</span>
         <SearchBar
           placeHolder="Search by city or town"
@@ -38,7 +38,7 @@ const HomePage = () => {
       </div>
       <div className="grid md:grid-cols-2 gap-5">
         <img src={landingImage} alt="mobileImage" />
-        <div className="flex flex-col items-center justify-center gap-4 text-center">
+        <div className="flex flex-col items-center justify-center gap-4 text-center">   
           <span className="font-bold text-3xl tracking-tighter">
             Order takeaway even faster!
           </span>

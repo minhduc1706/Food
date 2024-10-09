@@ -35,7 +35,7 @@ const OrderSummary = ({ restaurant, cartItems, removeFromCart }: Props) => {
     <>
       <CardHeader>
         <CardTitle className="text-2xl font-bold tracking-tight flex justify-between">
-          <span>Your Order</span>
+          <span>Your Total</span>
           <span>${formatCurrency(getTotalCost())}</span>
         </CardTitle>
       </CardHeader>
@@ -51,7 +51,7 @@ const OrderSummary = ({ restaurant, cartItems, removeFromCart }: Props) => {
             <span className="flex items-center gap-1">
               ${formatCurrency(item.price * item.quantity)}
               <TooltipProvider>
-                <Tooltip>
+                <Tooltip delayDuration={0}>
                   <TooltipTrigger asChild>
                     <Trash
                       className="cursor-pointer hover:fill-red-500 transition-colors"

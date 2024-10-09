@@ -12,15 +12,13 @@ const ManageRestaurantPage = () => {
   const { updateRestaurant, isLoading: isUpdateRestaurant } =
     useUpdateRestaurant();
 
-  const isEditting = !!getRestaurant;
-
   if (isGetRestaurant) {
     return <span>Loading...</span>;
   }
 
   return (
     <ManageRestaurantForm
-      onSave={isEditting ? updateRestaurant : createRestaurant}
+      onSave={isGetRestaurant ? updateRestaurant : createRestaurant}
       isLoading={isCreateRestaurant || isUpdateRestaurant}
       restaurant={getRestaurant}
     />

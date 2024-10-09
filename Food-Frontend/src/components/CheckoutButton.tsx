@@ -55,7 +55,7 @@ const CheckoutButton = ({ onCheckout, disabled, isLoading }: Props) => {
     <Dialog>
       <DialogTrigger asChild>
         <Button disabled={disabled} className="bg-orange-500 flex-1">
-          Checkout
+          Place Order
         </Button>
       </DialogTrigger>
       <DialogHeader>
@@ -70,7 +70,7 @@ const CheckoutButton = ({ onCheckout, disabled, isLoading }: Props) => {
             onSave={onCheckout}
             isLoading={isGetUserLoading}
             title="Confirm Delivery Details"
-            buttonText="Continue to payment"
+            buttonText="Continue to pay"
           />
         </DialogContent>
       </DialogHeader>

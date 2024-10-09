@@ -4,9 +4,11 @@ import { toast } from "sonner";
 import { useCreateCheckoutSession } from "src/api/OrderApi";
 import { useGetRestaurantById} from "src/api/RestaurantListApi";
 import CheckoutButton from "src/components/CheckoutButton";
+import DeliveryOptions from "src/components/DeliveryOptions";
 import MenuItem from "src/components/MenuItem";
 import OrderSummary from "src/components/OrderSummary";
 import RestaurantInfo from "src/components/RestaurantInfo";
+import TipDeliveryOptions from "src/components/TipDeliveryOptions";
 import { AspectRatio } from "src/components/ui/aspect-ratio";
 import { Card, CardFooter } from "src/components/ui/card";
 import { UserFormData } from "src/forms/user-profile-form/UserProfileForm";
@@ -122,7 +124,7 @@ const DetailPage = () => {
           className="rounded-md object-cover h-full w-full"
         />
       </AspectRatio>
-      <div className="grid md:grid-cols-[4fr_2fr] gap-5 md:px-32">
+      <div className="grid md:grid-cols-[4fr_2fr] gap-5">
         <div className="flex flex-col gap-4">
           <RestaurantInfo restaurant={restaurant} />
           <span className="text-2xl font-bold tracking-tight">Menu</span>
@@ -135,7 +137,15 @@ const DetailPage = () => {
           ))}
         </div>
 
-        <div className="">
+        <div className="flex flex-col gap-5">
+          <Card>
+            <DeliveryOptions/>
+          </Card>
+
+          <Card>
+            <TipDeliveryOptions/>
+          </Card>
+          
           <Card>
             <OrderSummary
               restaurant={restaurant}
@@ -151,6 +161,7 @@ const DetailPage = () => {
             </CardFooter>
           </Card>
         </div>
+
       </div>
     </div>
   );

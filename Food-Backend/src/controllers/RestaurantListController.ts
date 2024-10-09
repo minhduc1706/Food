@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import Restaurant from "../models/restaurant";
+import { Types } from "mongoose";
 
 const getRestaurantById = async (
   req: Request,
@@ -7,7 +8,7 @@ const getRestaurantById = async (
   next: NextFunction
 ) => {
   try {
-    const restaurantId = req.params.restaurantId;
+    let restaurantId = req.params.restaurantId;
     const restaurant = await Restaurant.findById(restaurantId);
 
     if (!restaurant) {
@@ -57,7 +58,7 @@ const searchRestaurants = async (
 
       query["cuisines"] = { $all: cuisinesArray };
     }
-    
+
     let searchQueryRegex;
     if (searchQuery) {
       searchQueryRegex = new RegExp(searchQuery, "i");
@@ -110,4 +111,9 @@ const getAllRestaurant = async (
     next(error);
   }
 };
-export default { searchRestaurants, getRestaurantById, getAllRestaurant };
+
+export default {
+  searchRestaurants,
+  getRestaurantById,
+  getAllRestaurant,
+};

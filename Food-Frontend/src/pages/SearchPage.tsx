@@ -134,7 +134,7 @@ function SearchPage() {
           onSearchSuggestions={handleSearchSuggestions}
         />
 
-        <div className="flex justify-between flex-col gap-3 lg:flex-row">
+        <div className="flex justify-between gap-3 ">
           <SearchResultInfo total={results.pagination.total} city={city} />
           <SortOptionDropDown
             onChange={(value) => setSortOption(value)}
