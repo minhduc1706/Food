@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
 import Restaurant from "../models/restaurant";
-import { Types } from "mongoose";
 
 const getRestaurantById = async (
   req: Request,

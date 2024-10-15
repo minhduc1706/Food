@@ -6,6 +6,7 @@ import { useGetRestaurantById} from "src/api/RestaurantListApi";
 import CheckoutButton from "src/components/CheckoutButton";
 import DeliveryOptions from "src/components/DeliveryOptions";
 import MenuItem from "src/components/MenuItem";
+import NoteForDelivery from "src/components/NoteForDelivery";
 import OrderSummary from "src/components/OrderSummary";
 import RestaurantInfo from "src/components/RestaurantInfo";
 import TipDeliveryOptions from "src/components/TipDeliveryOptions";
@@ -21,9 +22,6 @@ export type CartItem = {
   quantity: number;
 };
 
-type DataSession = {
-  url: string;
-};
 const DetailPage = () => {
   const { restaurantId } = useParams();
   const { restaurant, isLoading } = useGetRestaurantById(restaurantId);
@@ -79,6 +77,7 @@ const DetailPage = () => {
       return updatedCartItems;
     });
   };
+  
   const addToCart = (menuItem: MenuItemType) => {
     setCartItems((prevCartItems) => {
       const existingCartItem = prevCartItems.find(
@@ -124,7 +123,8 @@ const DetailPage = () => {
           className="rounded-md object-cover h-full w-full"
         />
       </AspectRatio>
-      <div className="grid md:grid-cols-[4fr_2fr] gap-5">
+      <div className="grid md:grid-cols-[4fr_2fr] gap-10">
+
         <div className="flex flex-col gap-4">
           <RestaurantInfo restaurant={restaurant} />
           <span className="text-2xl font-bold tracking-tight">Menu</span>
@@ -144,6 +144,10 @@ const DetailPage = () => {
 
           <Card>
             <TipDeliveryOptions/>
+          </Card>
+
+          <Card>
+            <NoteForDelivery/>
           </Card>
           
           <Card>
