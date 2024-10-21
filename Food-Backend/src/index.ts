@@ -33,6 +33,7 @@ app.use("/api/v1/order", orderRoute);
 
 app.use(errorHandler);
 
-app.listen(4000, () => {
-  console.log("server started on localhost: 4000");
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+  console.log(`server started on port: ${PORT}`);
 });
