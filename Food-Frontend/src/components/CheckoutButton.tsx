@@ -62,8 +62,6 @@ const CheckoutButton = ({ onCheckout, disabled, isLoading }: Props) => {
         <DialogContent className="max-w-[425px] md:min-w-[700px] bg-gray-50">
           <DialogTitle className="hidden">Edit Profile</DialogTitle>
           <DialogDescription className="hidden">
-            Please update your profile information before proceeding with
-            checkout.
           </DialogDescription>
           <UserProfileForm
             currentUser={currentUser}

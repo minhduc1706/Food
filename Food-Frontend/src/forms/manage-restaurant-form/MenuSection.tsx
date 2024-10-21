@@ -35,7 +35,7 @@ function MenuSection() {
         )}
       />
 
-      <Button type="button" onClick={() => append({ name: "", price: "" })}>
+      <Button type="button" onClick={() => append({ name: "", price: "",description: "" })}>
         Add menu item
       </Button>
     </div>

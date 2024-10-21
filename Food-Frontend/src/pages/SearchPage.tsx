@@ -16,6 +16,7 @@ export type SearchState = {
   selectedCuisines: string[];
   sortOption: string;
 };
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 function SearchPage() {
@@ -58,10 +59,9 @@ function SearchPage() {
       setRestaurants(response.data?.data || []);
       return response.data?.data || [];
     } catch (error) {
-      setRestaurants([]); 
+      setRestaurants([]);
     }
   };
-
 
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
@@ -105,7 +105,40 @@ function SearchPage() {
   };
 
   if (isLoading) {
-    return <span>Loading...</span>;
+    return (
+      <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-5">
+        <div className="animate-pulse" id="cuisines-list">
+          <div className="flex justify-between">
+            <div className="text-md font-semibold mb-2">Filter by cuisines</div>
+            <div className="text-sm font-semibold mb-2 underline cursor-pointer text-blue-500">
+              Reset filter
+            </div>
+          </div>
+          <div className="h-6 bg-gray-300 rounded mb-2"></div>
+          <div className="h-6 bg-gray-300 rounded mb-2"></div>
+          <div className="h-6 bg-gray-300 rounded mb-2"></div>
+          <div className="h-6 bg-gray-300 rounded mb-2"></div>
+          <div className="h-6 bg-gray-300 rounded mb-2"></div>
+          <div className="h-6 bg-gray-300 rounded mb-2"></div>
+          <div className="h-6 bg-gray-300 rounded mb-2"></div>
+        </div>
+
+        <div className="flex flex-col gap-5 animate-pulse" id="main-content">
+          <div className="h-12 bg-gray-300 rounded"></div>
+
+          <div className="flex justify-between gap-3">
+            <div className="h-6 bg-gray-300 rounded w-1/3"></div>
+            <div className="h-6 bg-gray-300 rounded w-1/4"></div>
+          </div>
+
+          <div className="h-24 bg-gray-300 rounded mb-4"></div>
+          <div className="h-24 bg-gray-300 rounded mb-4"></div>
+          <div className="h-24 bg-gray-300 rounded mb-4"></div>
+
+          <div className="h-8 bg-gray-300 rounded w-1/4 mx-auto"></div>
+        </div>
+      </div>
+    );
   }
 
   if (!city || !results?.data) {
@@ -141,6 +174,7 @@ function SearchPage() {
             sortOption={searchState.sortOption}
           />
         </div>
+
         {restaurants.length > 0
           ? restaurants.map((restaurant) => (
               <SearchResultCard restaurant={restaurant} key={restaurant._id} />

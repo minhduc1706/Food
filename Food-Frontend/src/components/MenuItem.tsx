@@ -20,27 +20,23 @@ const MenuItem = ({ menuItem, addToCart }: Props) => {
     <Card className="cursor-pointer border-slate-200">
       <CardHeader>
         <CardTitle>
-          {menuItem.name} pizaa + pepsi + dasdasd dasdasda dasdas
+          {menuItem.name}
         </CardTitle>
       </CardHeader>
       <CardContent className="flex justify-between items-center">
         <div className="flex flex-col gap-2">
-          <p>
-            {menuItem.description}Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Reprehenderit doloribus, maxime dolorem
-          </p>
+          <p>{menuItem.description}</p>
           <div className="">
-            <span className="text-orange-500 font-bold text-xl">
+            <span className="text-orange-500 font-bold text-xl mr-2">
               ${menuItem.price}
             </span>
-            {"/"}
             <span className="text-gray-500 line-through">
-              ${menuItem.price * 1.1}
+              ${Math.round(menuItem.price * 1.1)};
             </span>
           </div>
           <span>
             <Badge className="bg-yellow-400 text-white px-2 py-1 rounded">
-              Save ${menuItem.price * 0.1}
+              Save ${Math.round(menuItem.price * 0.1)}
             </Badge>
           </span>
         </div>

@@ -8,54 +8,84 @@ import {
   FormMessage,
 } from "src/components/ui/form";
 import { Input } from "src/components/ui/input";
+import { Textarea } from "src/components/ui/textarea";
 
 type Props = {
   index: number;
   removeMenuItem: () => void;
 };
 
-function  MenuItemInput({ index, removeMenuItem }: Props) {
+const MenuItemInput = ({ index, removeMenuItem }: Props) => {
   const { control } = useFormContext();
   return (
-    <div className="flex flex-row items-end gap-2">
+    <>
+      <div className="flex flex-row items-end gap-2">
+        <FormField
+          control={control}
+          name={`menuItems.${index}.name`}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="flex items-center gap-1">
+                Name <FormMessage />
+              </FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  placeholder="Cheese Pizza"
+                  className="bg-white"
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={control}
+          name={`menuItems.${index}.price`}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="flex items-center gap-1">
+                Price ($)
+                <FormMessage />
+              </FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="9.99" className="bg-white" />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+
+        <Button
+          type="button"
+          onClick={removeMenuItem}
+          className="bg-red-500 max-h-fit"
+        >
+          Remove
+        </Button>
+      </div>
+      
       <FormField
         control={control}
-        name={`menuItems.${index}.name`}
+        name={`menuItems.${index}.description`}
         render={({ field }) => (
           <FormItem>
             <FormLabel className="flex items-center gap-1">
-              Name <FormMessage />
+              Description
+              <FormMessage />
             </FormLabel>
             <FormControl>
-              <Input
+              <Textarea
                 {...field}
-                placeholder="Cheese Pizza"
+                placeholder="Description of the menu item"
                 className="bg-white"
+                rows={4}
               />
             </FormControl>
           </FormItem>
         )}
       />
-
-      <FormField
-        control={control}
-        name={`menuItems.${index}.price`}
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel className="flex items-center gap-1">
-              Price ($)
-              <FormMessage />
-            </FormLabel>
-            <FormControl>
-              <Input {...field} placeholder="9.99" className="bg-white" />
-            </FormControl>
-          </FormItem>
-        )}
-      />
-
-      <Button type="button" onClick={removeMenuItem} className="bg-red-500 max-h-fit">Remove</Button>
-    </div>
+    </>
   );
-}
+};
 
 export default MenuItemInput;

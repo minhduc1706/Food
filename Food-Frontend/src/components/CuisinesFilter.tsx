@@ -28,6 +28,7 @@ const CuisinesFilter = ({
 
     onChange(newCuisinesList);
   };
+
   return (
     <>
       <div className="flex justify-between items-center px-2">

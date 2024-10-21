@@ -38,6 +38,7 @@ const formShema = z
       z.object({
         name: z.string().min(1, "name is required"),
         price: z.coerce.number().min(1, "price is a number"),
+        description: z.string().min(50, "description is at least 50 characters")
       })
     ),
     imageUrl: z.string().optional(),
@@ -105,6 +106,8 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant }: Props) => {
     formDataJson.menuItems.forEach((item, index) => {
       formData.append(`menuItems[${index}][name]`, item.name);
       formData.append(`menuItems[${index}][price]`, item.price.toString());
+      formData.append(`menuItems[${index}][description]`, item.description);
+
     });
     console.log(formDataJson.menuItems);
     if (formDataJson.imageFile) {
@@ -130,7 +133,7 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant }: Props) => {
         {isLoading ? <LoadingButton /> : <Button type="submit">Submit</Button>}
       </form>
     </Form>
-  );
+  );  
 };
 
 export default ManageRestaurantForm;

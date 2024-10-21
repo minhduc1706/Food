@@ -22,10 +22,14 @@ import {
 import { Calendar } from "./ui/calendar";
 import { useState } from "react";
 
-const DeliveryOptions = () => {
-  const [selectedOption, setSelectedOption] = useState<string | undefined>(
-    "standard"
-  );
+type DeliveryOptionsProps = {
+  selectedOption: string;
+  setSelectedOption: (value: string) => void;
+};
+const DeliveryOptions = ({
+  selectedOption,
+  setSelectedOption,
+}: DeliveryOptionsProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);

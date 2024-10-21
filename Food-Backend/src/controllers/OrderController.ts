@@ -21,6 +21,27 @@ type CheckoutSessionRequest = {
     city: string;
   };
   restaurantId: string;
+  deliveryTip: number;
+  deliveryInstructions: string;
+};
+
+const calculateTotalAmount = (
+  cartItems: { menuItemId: string; quantity: number }[],
+  menuItems: MenuItemType[],
+  deliveryPrice: number,
+  deliveryTip: number
+) => {
+  let total = 0;
+  cartItems.forEach((cartItem) => {
+    const menuItem = menuItems.find(
+      (item) => item._id.toString() === cartItem.menuItemId.toString()
+    );
+    if (menuItem) {
+      total += menuItem.price * cartItem.quantity;
+    }
+  });
+  total += deliveryPrice + deliveryTip;
+  return total;
 };
 
 const CreateCheckoutSession = async (
@@ -41,25 +62,36 @@ const CreateCheckoutSession = async (
       throw error;
     }
 
+    const lineItems = createLineItems(
+      checkoutSessionRequest,
+      restaurant.menuItems
+    );
+
+    const totalAmount = calculateTotalAmount(
+      checkoutSessionRequest.cartItems,
+      restaurant.menuItems,
+      restaurant.deliveryPrice,
+      checkoutSessionRequest.deliveryTip || 0
+    );
+
     const newOrder = new Order({
       restaurant: restaurant,
       user: req.userId,
       status: "placed",
       deliveryDetails: checkoutSessionRequest.deliveryDetails,
       cartItems: checkoutSessionRequest.cartItems,
+      deliveryTip: checkoutSessionRequest.deliveryTip || 0,
+      deliveryInstructions: checkoutSessionRequest.deliveryInstructions || "",
+      totalAmount,
       createdAt: new Date(),
     });
-
-    const lineItems = createLineItems(
-      checkoutSessionRequest,
-      restaurant.menuItems
-    );
 
     const session = await createSession(
       lineItems,
       newOrder._id.toString(),
       restaurant.deliveryPrice,
-      restaurant._id.toString()
+      restaurant._id.toString(),
+      checkoutSessionRequest.deliveryTip || 0
     );
 
     if (!session.url) {
@@ -110,8 +142,24 @@ const createSession = async (
   lineItems: Stripe.Checkout.SessionCreateParams.LineItem[],
   orderId: string,
   deliveryPrice: number,
-  restaurantId: string
+  restaurantId: string,
+  deliveryTip: number
 ) => {
+  if (deliveryTip > 0) {
+    const tipItem: Stripe.Checkout.SessionCreateParams.LineItem = {
+      price_data: {
+        currency: "usd",
+        unit_amount: Math.round(deliveryTip * 100),
+        product_data: {
+          name: "Delivery Tip",
+        },
+      },
+      quantity: 1,
+    };
+
+    lineItems.push(tipItem);
+  }
+
   const sessionData = await STRIPE.checkout.sessions.create({
     line_items: lineItems,
     payment_method_types: ["card"],
@@ -160,6 +208,9 @@ const stripeWebHookHandler = async (req: Request, res: Response) => {
       return res.status(404).json({ message: "Order not found" });
     }
 
+    if (event.data.object.amount_total === null) {
+      throw new Error("Amount total cannot be null");
+    }
     order.totalAmount = event.data.object.amount_total;
     order.status = "paid";
 

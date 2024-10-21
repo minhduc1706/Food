@@ -14,29 +14,43 @@ import {
 type Props = {
   restaurant: Restaurant;
   cartItems: CartItem[];
+  deliveryTip: number;
   removeFromCart: (cartItem: CartItem) => void;
+  selectedOption: string;
 };
 
-const OrderSummary = ({ restaurant, cartItems, removeFromCart }: Props) => {
+const OrderSummary = ({
+  restaurant,
+  cartItems,
+  deliveryTip,
+  removeFromCart,
+  selectedOption,
+}: Props) => {
   const formatCurrency = (amount: number) => {
     const formattedAmount = amount.toFixed(2);
     return formattedAmount.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
-  const getTotalCost = () => {
+  const getSubTotalCost = () => {
     const totalInPence = cartItems.reduce(
       (total, cartItems) => total + cartItems.price * cartItems.quantity,
       0
     );
-    const totalWithDelivery = totalInPence + restaurant.deliveryPrice;
+    const totalWithDelivery = totalInPence;
     return totalWithDelivery;
   };
+
+  const getTotalCost = () => {
+    return selectedOption === "priority"
+      ? getSubTotalCost() + restaurant.deliveryPrice + deliveryTip + 19
+      : getSubTotalCost() + restaurant.deliveryPrice + deliveryTip;
+  };
+
   return (
     <>
       <CardHeader>
         <CardTitle className="text-2xl font-bold tracking-tight flex justify-between">
-          <span>Your Total</span>
-          <span>${formatCurrency(getTotalCost())}</span>
+          <span>Your Order</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-5">
@@ -72,9 +86,32 @@ const OrderSummary = ({ restaurant, cartItems, removeFromCart }: Props) => {
           </div>
         ))}
         <Separator />
-        <div className="flex justify-between">
-          <span>Delivery</span>
-          <span>${formatCurrency(restaurant.deliveryPrice)}</span>
+        <div className="flex flex-col gap-2">
+          <div className="flex justify-between">
+            <span>Subtotal</span>
+            <span>${formatCurrency(getSubTotalCost())}</span>
+          </div>
+          <div className="flex justify-between">
+            <span>Delivery</span>
+            <span>${formatCurrency(restaurant.deliveryPrice)}</span>
+          </div>
+          {deliveryTip > 0 && (
+            <div className="flex justify-between">
+              <span>Delivery Tip</span>
+              <span>${formatCurrency(deliveryTip)}</span>
+            </div>
+          )}
+          {selectedOption === "priority" && (
+            <div className="flex justify-between">
+              <span>Priority Delivery</span>
+              <span>$19.00</span>
+            </div>
+          )}
+          <div className="flex justify-between text-xl font-bold">
+            <span>Total</span>
+            <span>${formatCurrency(getTotalCost())}</span>
+          </div>
+          <span className="text-sm">(incl. fees and tax)</span>
         </div>
         <Separator />
       </CardContent>

@@ -1,4 +1,4 @@
-import mongoose, { InferSchemaType, mongo } from "mongoose";
+import mongoose, { InferSchemaType } from "mongoose";
 
 const menuItemShema = new mongoose.Schema({
   _id: {
@@ -14,6 +14,10 @@ const menuItemShema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  description :{
+    type: String,
+    required: true,
+  }
 });
 
 export type MenuItemType = InferSchemaType<typeof menuItemShema>

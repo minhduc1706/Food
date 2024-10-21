@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "sonner";
 import { useCreateCheckoutSession } from "src/api/OrderApi";
-import { useGetRestaurantById} from "src/api/RestaurantListApi";
+import { useGetRestaurantById } from "src/api/RestaurantListApi";
 import CheckoutButton from "src/components/CheckoutButton";
 import DeliveryOptions from "src/components/DeliveryOptions";
 import MenuItem from "src/components/MenuItem";
@@ -27,10 +27,16 @@ const DetailPage = () => {
   const { restaurant, isLoading } = useGetRestaurantById(restaurantId);
   const { createCheckoutSession, isLoading: isCheckoutLoading } =
     useCreateCheckoutSession();
+
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
     const storeCartItems = sessionStorage.getItem(`cartItems-${restaurantId}`);
     return storeCartItems ? JSON.parse(storeCartItems) : [];
   });
+
+  const [deliveryTip, setDeliveryTip] = useState<number>(0);
+  const [deliveryInstructions, setDeliveryInstructions] = useState<string>("");
+
+  const [selectedOption, setSelectedOption] = useState<string>("standard");
 
   const onCheckout = async (userFormData: UserFormData) => {
     if (!restaurant) {
@@ -42,7 +48,6 @@ const DetailPage = () => {
         name: cartItem.name,
         quantity: cartItem.quantity,
       })),
-      restaurantId: restaurant?._id,
       deliveryDetails: {
         name: userFormData.name,
         addressLine1: userFormData.addressLine1,
@@ -50,6 +55,9 @@ const DetailPage = () => {
         country: userFormData.country,
         email: userFormData.email as string,
       },
+      restaurantId: restaurant?._id,
+      deliveryTip,
+      deliveryInstructions,
     };
 
     let data;
@@ -77,7 +85,7 @@ const DetailPage = () => {
       return updatedCartItems;
     });
   };
-  
+
   const addToCart = (menuItem: MenuItemType) => {
     setCartItems((prevCartItems) => {
       const existingCartItem = prevCartItems.find(
@@ -112,9 +120,39 @@ const DetailPage = () => {
   };
 
   if (isLoading || !restaurant) {
-    return <span>Loading...</span>;
-  }
+    return (
+      <div className="flex flex-col gap-10">
+        <div className="animate-pulse">
+          <div className="bg-gray-300 rounded-md aspect-ratio aspect-ratio-16/5 h-40"></div>
+        </div>
 
+        <div className="grid md:grid-cols-[4fr_2fr] gap-10">
+          <div className="flex flex-col gap-4">
+            <div className="bg-gray-300 rounded w-1/4 h-8"></div>
+            <div className="bg-gray-300 rounded w-2/3 h-4 mb-4"></div>
+            <div className="bg-gray-300 rounded w-full h-10"></div>
+            <div className="bg-gray-300 rounded w-full h-10"></div>
+            <div className="bg-gray-300 rounded w-full h-10"></div>
+          </div>
+
+          <div className="flex flex-col gap-5">
+            <div className="animate-pulse">
+              <div className="bg-gray-300 rounded h-12 mb-4"></div>
+            </div>
+            <div className="animate-pulse">
+              <div className="bg-gray-300 rounded h-12 mb-4"></div>
+            </div>
+            <div className="animate-pulse">
+              <div className="bg-gray-300 rounded h-12 mb-4"></div>
+            </div>
+            <div className="animate-pulse">
+              <div className="bg-gray-300 rounded h-12 mb-4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="flex flex-col gap-10">
       <AspectRatio ratio={16 / 5}>
@@ -123,8 +161,8 @@ const DetailPage = () => {
           className="rounded-md object-cover h-full w-full"
         />
       </AspectRatio>
-      <div className="grid md:grid-cols-[4fr_2fr] gap-10">
 
+      <div className="grid md:grid-cols-[4fr_2fr] gap-10">
         <div className="flex flex-col gap-4">
           <RestaurantInfo restaurant={restaurant} />
           <span className="text-2xl font-bold tracking-tight">Menu</span>
@@ -139,23 +177,35 @@ const DetailPage = () => {
 
         <div className="flex flex-col gap-5">
           <Card>
-            <DeliveryOptions/>
+            <DeliveryOptions
+              selectedOption={selectedOption}
+              setSelectedOption={setSelectedOption}
+            />
           </Card>
 
           <Card>
-            <TipDeliveryOptions/>
+            <TipDeliveryOptions
+              deliveryTip={deliveryTip}
+              setDeliveryTip={setDeliveryTip}
+            />
           </Card>
 
           <Card>
-            <NoteForDelivery/>
+            <NoteForDelivery
+              deliveryInstructions={deliveryInstructions}
+              setDeliveryInstructions={setDeliveryInstructions}
+            />
           </Card>
-          
+
           <Card>
             <OrderSummary
               restaurant={restaurant}
               cartItems={cartItems}
+              deliveryTip={deliveryTip}
               removeFromCart={removeFromCart}
+              selectedOption={selectedOption}
             />
+
             <CardFooter>
               <CheckoutButton
                 onCheckout={onCheckout}
@@ -165,7 +215,6 @@ const DetailPage = () => {
             </CardFooter>
           </Card>
         </div>
-
       </div>
     </div>
   );
