@@ -4,13 +4,6 @@ import ProtectedRoute from "./auth/ProtectedRoute";
 import HomePage from "./pages/HomePage";
 import { lazy, Suspense } from "react";
 import LoadingSpinner from "./components/LoadingSpinner";
-
-// const AuthCallbackPage = lazy(() => import("./pages/AuthCallbackPage"));
-// const UserProfilePage = lazy(() => import("./pages/UserProfilePage"));
-// const ManageRestaurantPage = lazy(() => import("./pages/ManageRestaurantPage"));
-// const SearchPage = lazy(() => import("./pages/SearchPage"));
-// const DetailPage = lazy(() => import("./pages/DetailPage"));
-
 import AuthCallbackPage from "./pages/AuthCallbackPage";
 import UserProfilePage from "./pages/UserProfilePage";
 import ManageRestaurantPage from "./pages/ManageRestaurantPage";
@@ -20,7 +13,6 @@ import DetailPage from "./pages/DetailPage";
 const AppRoutes = () => {
   return (
     <Layout>
-      {/* <Suspense fallback={<LoadingSpinner/>}> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/auth-callback" element={<AuthCallbackPage />} />
@@ -35,7 +27,6 @@ const AppRoutes = () => {
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-      {/* </Suspense> */}
     </Layout>
   );
 };
