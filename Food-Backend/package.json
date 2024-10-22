@@ -4,6 +4,8 @@
   "description": "",
   "main": "./src/index.ts",
   "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js",
     "dev": "concurrently \"nodemon\" \"npm run stripe\" \"npm run start:frontend\"",
     "start:frontend": "cd ../Food-Frontend && npm run dev",
     "start:backend": "nodemon --exec ts-node src/index.ts",

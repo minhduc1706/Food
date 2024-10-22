@@ -166,7 +166,7 @@ const createSession = async (
     shipping_options: [
       {
         shipping_rate_data: {
-          display_name: "Delivery",
+          display_name: "Delivery Fee",
           type: "fixed_amount",
           fixed_amount: {
             amount: Math.round(deliveryPrice * 100),
@@ -211,13 +211,35 @@ const stripeWebHookHandler = async (req: Request, res: Response) => {
     if (event.data.object.amount_total === null) {
       throw new Error("Amount total cannot be null");
     }
-    order.totalAmount = event.data.object.amount_total;
+    order.totalAmount = event.data.object.amount_total / 100;
     order.status = "paid";
 
     await order.save();
+  } else if (event.type === "checkout.session.async_payment_failed") {
+    const order = await Order.findById(event.data.object.metadata?.orderId);
+    if (order) {
+      order.status = "failed";
+      await order.save();
+    }
+
+    res.status(200).send();
   }
 
-  res.status(200).send();
+  const checkExpiredOrders = async () => {
+    const now = new Date();
+    const expirationTime = 30 * 60 * 1000;
+
+    const orders = await Order.find({ status: "placed" });
+
+    orders.forEach(async (order) => {
+      if (now.getTime() - order.createdAt.getTime() > expirationTime) {
+        order.status = "expired";
+        await order.save();
+      }
+    });
+  };
+
+  setInterval(checkExpiredOrders, 5 * 60 * 1000);
 };
 export default {
   CreateCheckoutSession,

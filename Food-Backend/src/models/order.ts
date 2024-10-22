@@ -1,4 +1,4 @@
- import mongoose from "mongoose";
+import mongoose from "mongoose";
 
 const orderSchema = new mongoose.Schema({
   restaurant: {
@@ -15,7 +15,11 @@ const orderSchema = new mongoose.Schema({
   },
   cartItems: [
     {
-      menuItemId: { type: String, required: true },
+      menuItemId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "MenuItem",
+        required: true,
+      },
       quantity: { type: Number, required: true },
       name: { type: String, required: true },
     },
@@ -34,7 +38,16 @@ const orderSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["placed", "paid", "inProgress", "outForDelivery", "delivered"],
+    enum: [
+      "placed",
+      "paid",
+      "inProgress",
+      "outForDelivery",
+      "delivered",
+      "expired",
+      "canceled",
+      "failed",
+    ],
     default: "placed",
   },
   createdAt: {

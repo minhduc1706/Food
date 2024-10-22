@@ -4,7 +4,7 @@ const menuItemShema = new mongoose.Schema({
   _id: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    default: ()=> new mongoose.Types.ObjectId()
+    default: () => new mongoose.Types.ObjectId(),
   },
   name: {
     type: String,
@@ -14,13 +14,13 @@ const menuItemShema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  description :{
+  description: {
     type: String,
     required: true,
-  }
+  },
 });
 
-export type MenuItemType = InferSchemaType<typeof menuItemShema>
+export type MenuItemType = InferSchemaType<typeof menuItemShema>;
 
 const restaurantShema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
