@@ -22,6 +22,10 @@ export type CartItem = {
   quantity: number;
 };
 
+type CheckoutSessionResponse = {
+  url: string;
+}
+
 const DetailPage = () => {
   const { restaurantId } = useParams();
   const { restaurant, isLoading } = useGetRestaurantById(restaurantId);
@@ -60,13 +64,13 @@ const DetailPage = () => {
       deliveryInstructions,
     };
 
-    let data;
+    let data: CheckoutSessionResponse;
     try {
-      data = await createCheckoutSession(checkoutData);
+      data = await createCheckoutSession(checkoutData) as CheckoutSessionResponse; 
       toast.success("Checkout session created successfully!");
       window.location.href = data.url;
     } catch (error) {
-      console.log(data);
+      console.log(error);
       toast.error("Failed to create checkout session. Please try again.0");
     }
   };
