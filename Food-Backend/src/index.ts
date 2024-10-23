@@ -32,12 +32,10 @@ app.use("/api/v1/userRestaurants", userRestaurantstRouter);
 app.use("/api/v1/restaurantsList", restaurantListRouter);
 app.use("/api/v1/order", orderRoute);
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
-// Fallback route to serve index.html for React Router routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
 
 
