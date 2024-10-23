@@ -8,7 +8,7 @@ import restaurantListRouter from "./routes/RestaurantListRoute";
 import { v2 as cloudinary } from "cloudinary";
 import { errorHandler } from "./middleware/errorHandler";
 import orderRoute from "./routes/OrderRoute";
-import path from "path"; 
+import path from "path";
 
 mongoose
   .connect(process.env.MONGODB_CONNECTION_STRING as string)
@@ -32,13 +32,11 @@ app.use("/api/v1/userRestaurants", userRestaurantstRouter);
 app.use("/api/v1/restaurantsList", restaurantListRouter);
 app.use("/api/v1/order", orderRoute);
 
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, "../../Food-Frontend/dist")));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../Food-Frontend/dist", "index.html"));
 });
-
-
 
 app.use(errorHandler);
 
