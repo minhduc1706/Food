@@ -32,12 +32,6 @@ app.use("/api/v1/userRestaurants", userRestaurantstRouter);
 app.use("/api/v1/restaurantsList", restaurantListRouter);
 app.use("/api/v1/order", orderRoute);
 
-app.use(express.static(path.join(__dirname, "../../Food-Frontend/dist")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../../Food-Frontend/dist", "index.html"));
-});
-
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 4000;
