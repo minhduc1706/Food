@@ -11,7 +11,7 @@ function Header() {
           to="/"
           className="font-bold tracking-tight text-orange-500"
         >
-          <img src={logo} alt="Logo" className="w-20 h-auto md:w-24" />
+          <img src={logo} alt="Logo" className="w-20 h-auto md:w-24"loading='lazy'/>
         </Link>
 
         <div className="md:hidden">

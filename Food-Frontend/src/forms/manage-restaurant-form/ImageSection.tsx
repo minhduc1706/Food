@@ -30,6 +30,7 @@ export default function ImageSection() {
             <img
               src={existingImageUrl}
               className="rounded-md object-cover h-full w-full"
+              loading='lazy'
             />
           </AspectRatio>
         )}

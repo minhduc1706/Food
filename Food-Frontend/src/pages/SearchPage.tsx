@@ -110,7 +110,7 @@ function SearchPage() {
         <div className="animate-pulse" id="cuisines-list">
           <div className="flex justify-between">
             <div className="text-md font-semibold mb-2">Filter by cuisines</div>
-            <div className="text-sm font-semibold mb-2 underline cursor-pointer text-blue-500">
+            <div className="text-sm font-semibold mb-2 underline cursor-pointer text-orange-500">
               Reset filter
             </div>
           </div>
@@ -168,7 +168,7 @@ function SearchPage() {
         />
 
         <div className="flex justify-between gap-3 ">
-          <SearchResultInfo total={results.pagination.total} city={city} />
+          <SearchResultInfo total={results.pagination.total} city={city} restaurants={restaurants}/>
           <SortOptionDropDown
             onChange={(value) => setSortOption(value)}
             sortOption={searchState.sortOption}
@@ -179,7 +179,7 @@ function SearchPage() {
           ? restaurants.map((restaurant) => (
               <SearchResultCard restaurant={restaurant} key={restaurant._id} />
             ))
-          : ""}
+          :<span className="text-center">No restaurant found</span>}
 
         <PaginationSelector
           page={results.pagination.page}

@@ -12,12 +12,11 @@ const ManageRestaurantPage = () => {
   const { updateRestaurant, isLoading: isUpdateRestaurant } =
     useUpdateRestaurant();
 
-  if (!isGetRestaurant) {
+  if (isGetRestaurant) {
     return (
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-6 p-10">
         <div className="space-y-2 animate-pulse">
           <div className="bg-gray-300 rounded w-1/4 h-8"></div>
-          <div className="bg-gray-300 rounded w-2/3 h-4"></div>
         </div>
 
         <div className="flex gap-4">
@@ -46,7 +45,6 @@ const ManageRestaurantPage = () => {
             {Array.from({ length: 3 }).map((_, index) => (
               <div key={index} className="flex items-center gap-2">
                 <div className="bg-gray-300 rounded w-full h-10"></div>
-                <div className="bg-gray-300 rounded w-24 h-10"></div>
               </div>
             ))}
           </div>
