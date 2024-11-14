@@ -27,7 +27,7 @@ export const MobileNav = () => {
               <span>{user?.email}</span>
             </span>
           ) : (
-            <span className="font-bold text-gray-700">Welcome to MernEats.com</span>
+            <span className="font-bold text-gray-700">Welcome to <span className="text-orange-500 font-bold">DeliGo</span></span>
           )}
         </SheetTitle>
         <Separator className="border-t border-gray-200" />

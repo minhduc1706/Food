@@ -40,7 +40,7 @@ const DetailPage = () => {
   const [deliveryTip, setDeliveryTip] = useState<number>(0);
   const [deliveryInstructions, setDeliveryInstructions] = useState<string>("");
 
-  const [selectedOption, setSelectedOption] = useState<string>("standard");
+  const [deliveryOptions, setDeliveryOptions] = useState<string>("standard");
 
   const onCheckout = async (userFormData: UserFormData) => {
     if (!restaurant) {
@@ -48,8 +48,7 @@ const DetailPage = () => {
     }
     const checkoutData = {
       cartItems: cartItems.map((cartItem) => ({
-        menuItemId: cartItem._id,
-        name: cartItem.name,
+        menuItem: cartItem._id,
         quantity: cartItem.quantity,
       })),
       deliveryDetails: {
@@ -62,6 +61,7 @@ const DetailPage = () => {
       restaurantId: restaurant?._id,
       deliveryTip,
       deliveryInstructions,
+      deliveryOptions
     };
 
     let data: CheckoutSessionResponse;
@@ -70,8 +70,9 @@ const DetailPage = () => {
       toast.success("Checkout session created successfully!");
       window.location.href = data.url;
     } catch (error) {
+      console.log("checkoutData:", checkoutData);
       console.log(error);
-      toast.error("Failed to create checkout session. Please try again.0");
+      toast.error("Failed to create checkout session. Please try again.");
     }
   };
 
@@ -182,8 +183,8 @@ const DetailPage = () => {
         <div className="flex flex-col gap-5">
           <Card>
             <DeliveryOptions
-              selectedOption={selectedOption}
-              setSelectedOption={setSelectedOption}
+              deliveryOptions={deliveryOptions}
+              setDeliveryOptions={setDeliveryOptions}
             />
           </Card>
 
@@ -207,7 +208,7 @@ const DetailPage = () => {
               cartItems={cartItems}
               deliveryTip={deliveryTip}
               removeFromCart={removeFromCart}
-              selectedOption={selectedOption}
+              deliveryOptions={deliveryOptions}
             />
 
             <CardFooter>

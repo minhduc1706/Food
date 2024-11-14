@@ -1,74 +1,56 @@
-import mongoose, { InferSchemaType } from "mongoose";
+import mongoose, { Schema } from "mongoose";
+import { IRestaurant } from "../interface";
+import User from "./user";
+import MenuItem from "./menuItem";
 
-const menuItemShema = new mongoose.Schema({
-  _id: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    default: () => new mongoose.Types.ObjectId(),
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-});
-
-export type MenuItemType = InferSchemaType<typeof menuItemShema>;
-
-const restaurantShema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  restaurantName: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  country: {
-    type: String,
-    required: true,
-  },
-  city: {
-    type: String,
-    required: true,
-  },
-  deliveryPrice: {
-    type: Number,
-    required: true,
-  },
-  estimatedDeliveryTime: {
-    type: Number,
-    required: true,
-  },
-  cuisines: [
-    {
+const restaurantcShema = new Schema<IRestaurant>(
+  {
+    user: { type: Schema.Types.ObjectId, ref: User, required: true },
+    restaurantName: {
       type: String,
       required: true,
     },
-  ],
-  menuItems: [menuItemShema],
-  imageUrl: {
-    type: String,
-    required: true,
+    description: {
+      type: String,
+      required: true,
+    },
+    country: {
+      type: String,
+      required: true,
+    },
+    city: {
+      type: String,
+      required: true,
+    },
+    deliveryPrice: {
+      type: Number,
+      required: true,
+    },
+    estimatedDeliveryTime: {
+      type: Number,
+      required: true,
+    },
+    cuisines: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
+    menuItems: [
+      { type: Schema.Types.ObjectId, ref: MenuItem, required: true },
+    ],
+    imageUrl: {
+      type: String,
+      required: true,
+    },
+    coordinates: {
+      lat: Number,
+      lon: Number,
+    },
   },
-  lastUpdated: {
-    type: Date,
-    required: true,
-  },
-  coordinates: {
-    lat: Number,
-    lon: Number,
-  },
-});
+  { timestamps: true }
+);
 
-const Restaurant = mongoose.model("Restaurant", restaurantShema);
+const Restaurant = mongoose.model<IRestaurant>("Restaurant", restaurantcShema);
 
 export default Restaurant;

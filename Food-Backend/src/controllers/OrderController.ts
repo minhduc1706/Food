@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import Stripe from "stripe";
-import Restaurant, { MenuItemType } from "../models/restaurant";
+import Restaurant from "../models/restaurant";
+import { IMenuItem } from "../interface";
 import Order from "../models/order";
 
 const STRIPE = new Stripe(process.env.STRIPE_API_KEY as string);
@@ -9,8 +10,7 @@ const STRIPE_ENDPOINT_SECRET = process.env.STRIPE_WEBHOOK_SECRET as string;
 
 type CheckoutSessionRequest = {
   cartItems: {
-    menuItemId: string;
-    name: string;
+    menuItem: string;
     quantity: number;
   }[];
 
@@ -23,18 +23,19 @@ type CheckoutSessionRequest = {
   restaurantId: string;
   deliveryTip: number;
   deliveryInstructions: string;
+  deliveryOptions: "standard" | "priority" | "scheduled";
 };
 
 const calculateTotalAmount = (
-  cartItems: { menuItemId: string; quantity: number }[],
-  menuItems: MenuItemType[],
+  cartItems: { menuItem: string; quantity: number }[],
+  menuItems: IMenuItem[],
   deliveryPrice: number,
   deliveryTip: number
 ) => {
   let total = 0;
   cartItems.forEach((cartItem) => {
     const menuItem = menuItems.find(
-      (item) => item._id.toString() === cartItem.menuItemId.toString()
+      (item) => item._id.toString() === cartItem.menuItem.toString()
     );
     if (menuItem) {
       total += menuItem.price * cartItem.quantity;
@@ -54,7 +55,10 @@ const CreateCheckoutSession = async (
 
     const restaurant = await Restaurant.findById(
       checkoutSessionRequest.restaurantId
-    );
+    )
+      .populate("menuItems")
+      .lean();
+
 
     if (!restaurant) {
       const error: any = new Error("Restaurant not found");
@@ -82,6 +86,7 @@ const CreateCheckoutSession = async (
       cartItems: checkoutSessionRequest.cartItems,
       deliveryTip: checkoutSessionRequest.deliveryTip || 0,
       deliveryInstructions: checkoutSessionRequest.deliveryInstructions || "",
+      deliveryOption: checkoutSessionRequest.deliveryOptions || "standard",
       totalAmount,
       createdAt: new Date(),
     });
@@ -91,7 +96,8 @@ const CreateCheckoutSession = async (
       newOrder._id.toString(),
       restaurant.deliveryPrice,
       restaurant._id.toString(),
-      checkoutSessionRequest.deliveryTip || 0
+      checkoutSessionRequest.deliveryTip || 0,
+      checkoutSessionRequest.deliveryOptions
     );
 
     if (!session.url) {
@@ -106,16 +112,16 @@ const CreateCheckoutSession = async (
 
 const createLineItems = (
   checkoutSessionRequest: CheckoutSessionRequest,
-  menuItems: MenuItemType[]
+  menuItems: IMenuItem[]
 ) => {
   const lineItems = checkoutSessionRequest.cartItems.map((cartItem) => {
     const menuItem = menuItems.find(
-      (item) => item._id.toString() === cartItem.menuItemId.toString()
+      (item) => item._id.toString() === cartItem.menuItem.toString()
     );
 
     if (!menuItem) {
       const error: any = new Error(
-        `Menu item not found: ${cartItem.menuItemId}`
+        `Menu item not found: ${cartItem.menuItem}`
       );
       error.statusCode = 404;
       throw error;
@@ -143,7 +149,8 @@ const createSession = async (
   orderId: string,
   deliveryPrice: number,
   restaurantId: string,
-  deliveryTip: number
+  deliveryTip: number,
+  deliveryOptions: "standard" | "priority" | "scheduled"
 ) => {
   if (deliveryTip > 0) {
     const tipItem: Stripe.Checkout.SessionCreateParams.LineItem = {
@@ -158,6 +165,21 @@ const createSession = async (
     };
 
     lineItems.push(tipItem);
+  }
+
+  if (deliveryOptions === "priority") {
+    const priorityFee: Stripe.Checkout.SessionCreateParams.LineItem = {
+      price_data: {
+        currency: "usd",
+        unit_amount: Math.round(19 * 100),
+        product_data: {
+          name: "Priority Delivery Fee",
+        },
+      },
+      quantity: 1,
+    };
+
+    lineItems.push(priorityFee);
   }
 
   const sessionData = await STRIPE.checkout.sessions.create({
@@ -241,7 +263,32 @@ const stripeWebHookHandler = async (req: Request, res: Response) => {
 
   setInterval(checkExpiredOrders, 5 * 60 * 1000);
 };
+
+const GetUserOrderDetails = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const orders = await Order.find({ user: req.userId })
+      .populate("restaurant")
+      .populate("user")
+      .sort({ createdAt: -1 })
+      .lean();
+
+    if (!orders) {
+      return res.status(404).json({ message: "No orders found for this user" });
+    }
+
+    res.status(200).json(orders);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+};
+
 export default {
   CreateCheckoutSession,
   stripeWebHookHandler,
+  GetUserOrderDetails,
 };

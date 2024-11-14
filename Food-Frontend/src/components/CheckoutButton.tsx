@@ -13,7 +13,7 @@ import { DialogTrigger } from "@radix-ui/react-dialog";
 import UserProfileForm, {
   UserFormData,
 } from "src/forms/user-profile-form/UserProfileForm";
-import { useFetchCurrentUser } from "src/api/UserApi";
+import { useGetCurrentUser } from "src/api/UserApi";
 
 type Props = {
   onCheckout: (userFormData: UserFormData) => void;
@@ -29,7 +29,7 @@ const CheckoutButton = ({ onCheckout, disabled, isLoading }: Props) => {
   } = useAuth0();
 
   const { pathname } = useLocation();
-  const { currentUser, isLoading: isGetUserLoading } = useFetchCurrentUser();
+  const { currentUser, isLoading: isGetUserLoading } = useGetCurrentUser();
 
   const onLogin = async () => {
     await loginWithRedirect({

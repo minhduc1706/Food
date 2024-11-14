@@ -8,6 +8,7 @@ import UserProfilePage from "./pages/UserProfilePage";
 import ManageRestaurantPage from "./pages/ManageRestaurantPage";
 import SearchPage from "./pages/SearchPage";
 import DetailPage from "./pages/DetailPage";
+import OrderPage from "./pages/OrderPage";
 
 const AppRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const AppRoutes = () => {
         <Route element={<ProtectedRoute />}>
           <Route path="/user-profile" element={<UserProfilePage />} />
           <Route path="/manage-restaurant" element={<ManageRestaurantPage />} />
+          <Route path="/orders" element={<OrderPage />} />
         </Route>
         <Route path="/test" element={<LoadingSpinner/>}/>
 

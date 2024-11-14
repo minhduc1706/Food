@@ -8,7 +8,6 @@ import restaurantListRouter from "./routes/RestaurantListRoute";
 import { v2 as cloudinary } from "cloudinary";
 import { errorHandler } from "./middleware/errorHandler";
 import orderRoute from "./routes/OrderRoute";
-import path from "path";
 
 mongoose
   .connect(process.env.MONGODB_CONNECTION_STRING as string)

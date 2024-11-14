@@ -23,12 +23,12 @@ import { Calendar } from "./ui/calendar";
 import { useState } from "react";
 
 type DeliveryOptionsProps = {
-  selectedOption: string;
-  setSelectedOption: (value: string) => void;
+  deliveryOptions: string;
+  setDeliveryOptions: (value: string) => void;
 };
 const DeliveryOptions = ({
-  selectedOption,
-  setSelectedOption,
+  deliveryOptions,
+  setDeliveryOptions,
 }: DeliveryOptionsProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
@@ -40,12 +40,12 @@ const DeliveryOptions = ({
     if (value === "scheduled") {
       setIsDialogOpen(true);
     }
-    setSelectedOption(value);
+    setDeliveryOptions(value);
   };
 
   const handleDialogClose = () => {
     setIsDialogOpen(false);
-    setSelectedOption("standard");
+    setDeliveryOptions("standard");
     setSelectedTime(null);
   };
 
@@ -113,7 +113,7 @@ const DeliveryOptions = ({
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
-        <RadioGroup value={selectedOption} onValueChange={handleOptionChange}>
+        <RadioGroup value={deliveryOptions} onValueChange={handleOptionChange}>
           <Label
             htmlFor="standard"
             className="flex items-center space-x-2 p-2 rounded-lg border border-gray-300 hover:bg-gray-100 cursor-pointer transition"
@@ -122,9 +122,9 @@ const DeliveryOptions = ({
               value="standard"
               id="standard"
               className={`h-6 w-6 border-2 border-gray-400 hover:border-black ${
-                selectedOption === "standard" ? "border-4 border-black" : ""
+                deliveryOptions === "standard" ? "border-4 border-black" : ""
               }`}
-              checked={selectedOption === "standard"}
+              checked={deliveryOptions === "standard"}
             />
             <span className="font-medium">Standard</span>
             <span className="text-gray-500">50 - 65 mins</span>
@@ -139,15 +139,15 @@ const DeliveryOptions = ({
                 value="priority"
                 id="priority"
                 className={`h-6 w-6 border-2 border-gray-400 hover:border-black ${
-                  selectedOption === "priority" ? "border-4 border-black" : ""
+                  deliveryOptions === "priority" ? "border-4 border-black" : ""
                 }`}
-                checked={selectedOption === "priority"}
+                checked={deliveryOptions === "priority"}
               />
               <span className="font-medium">Priority</span>
               <span className="text-gray-500">45 - 55 mins</span>
               <div className="text-orange-500 font-semibold">+ $19.00</div>
             </div>
-            {selectedOption === "priority" && (
+            {deliveryOptions === "priority" && (
               <AlertDialog>
                 <AlertDialogTrigger asChild>
                   <Button className="" variant="outline">
@@ -181,9 +181,9 @@ const DeliveryOptions = ({
               value="scheduled"
               id="scheduled"
               className={`h-6 w-6 border-2 border-gray-400 hover:border-black ${
-                selectedOption === "scheduled" ? "border-4 border-black" : ""
+                deliveryOptions === "scheduled" ? "border-4 border-black" : ""
               }`}
-              checked={selectedOption === "scheduled"}
+              checked={deliveryOptions === "scheduled"}
             />
             <span className="font-medium">Scheduled</span>
             {selectedTime && selectedDate ? (

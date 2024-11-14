@@ -21,8 +21,10 @@ const AuthCallbackPage = () => {
             email: user.email,
           });
         } catch (error) {
+          console.log("checkk", user);
           toast.error("Failed to create your account. Please try again later.");
         }
+        console.log("success", user);
         navigate("/");
       }
     };

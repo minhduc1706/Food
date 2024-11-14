@@ -1,12 +1,12 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { makeApiRequest } from "./ApiRequest";
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { toast } from "sonner";
+import { Order } from "src/types";
 
 type CheckoutSessionRequest = {
   cartItems: {
-    menuItemId: string;
-    name: string;
+    menuItem: string;
     quantity: number;
   }[];
 
@@ -32,7 +32,6 @@ export const useCreateCheckoutSession = () => {
     console.log("Checkout Session Request:", checkoutSessionRequest);
     console.log("Access Token:", accessToken);
 
-
     const response = await makeApiRequest(
       "/order/checkout/create-checkout-session",
       {
@@ -44,7 +43,6 @@ export const useCreateCheckoutSession = () => {
         data: JSON.stringify(checkoutSessionRequest),
       }
     );
-    console.log("API Response:", response);
     return response;
   };
 
@@ -74,4 +72,29 @@ export const useCreateCheckoutSession = () => {
   }
 
   return { createCheckoutSession, isLoading };
+};
+
+export const useGetOrder = () => {
+  const { getAccessTokenSilently } = useAuth0();
+
+  const getOrderDetails = async (): Promise<Order[]> => {
+    const accessToken = await getAccessTokenSilently();
+    const response = await makeApiRequest("/order", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return response as Order[];
+  };
+
+  const { data: orders, isLoading } = useQuery("userOrders", getOrderDetails, {
+    onError: (error: any) => {
+      const errorMessage =
+        error.response?.data?.message || "Failed to fetch user orders.";
+      toast.error(errorMessage);
+    },
+  });
+
+  return { orders, isLoading };
 };

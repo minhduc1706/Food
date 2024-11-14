@@ -16,7 +16,7 @@ type Props = {
   cartItems: CartItem[];
   deliveryTip: number;
   removeFromCart: (cartItem: CartItem) => void;
-  selectedOption: string;
+  deliveryOptions: string;
 };
 
 const OrderSummary = ({
@@ -24,7 +24,7 @@ const OrderSummary = ({
   cartItems,
   deliveryTip,
   removeFromCart,
-  selectedOption,
+  deliveryOptions,
 }: Props) => {
   const formatCurrency = (amount: number) => {
     const formattedAmount = amount.toFixed(2);
@@ -41,7 +41,7 @@ const OrderSummary = ({
   };
 
   const getTotalCost = () => {
-    return selectedOption === "priority"
+    return deliveryOptions === "priority"
       ? getSubTotalCost() + restaurant.deliveryPrice + deliveryTip + 19
       : getSubTotalCost() + restaurant.deliveryPrice + deliveryTip;
   };
@@ -101,7 +101,7 @@ const OrderSummary = ({
               <span>${formatCurrency(deliveryTip)}</span>
             </div>
           )}
-          {selectedOption === "priority" && (
+          {deliveryOptions === "priority" && (
             <div className="flex justify-between">
               <span>Priority Delivery</span>
               <span>$19.00</span>

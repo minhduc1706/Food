@@ -8,11 +8,11 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import { CircleUserRound, LogOut } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useFetchCurrentUser } from "src/api/UserApi";
+import { useGetCurrentUser } from "src/api/UserApi";
 
 const UsernameMemu = () => {
   const { user, logout } = useAuth0();
-  const {currentUser} = useFetchCurrentUser();
+  const {currentUser} = useGetCurrentUser();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -42,6 +42,17 @@ const UsernameMemu = () => {
             className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md transition duration-200 ease-in-out"
           >
             User
+          </Link>
+        </DropdownMenuItem>
+
+        <DropdownMenuSeparator className="my-2" />
+
+        <DropdownMenuItem asChild>
+          <Link
+            to="/orders"
+            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md transition duration-200 ease-in-out"
+          >
+            Orders
           </Link>
         </DropdownMenuItem>
 

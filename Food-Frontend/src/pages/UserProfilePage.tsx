@@ -1,9 +1,9 @@
-import { useFetchCurrentUser, useUpdateUser } from "src/api/UserApi";
+import { useGetCurrentUser, useUpdateUser } from "src/api/UserApi";
 import UserProfileForm from "src/forms/user-profile-form/UserProfileForm";
 
 const UserProfilePage = () => {
   const { updateUser, isLoading: isUpdateLoading } = useUpdateUser();
-  const { currentUser, isLoading: isGetLoading } = useFetchCurrentUser();
+  const { currentUser, isLoading: isGetLoading } = useGetCurrentUser();
 
   if (isGetLoading) {
     return (

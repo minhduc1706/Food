@@ -8,7 +8,9 @@ const getRestaurantById = async (
 ) => {
   try {
     let restaurantId = req.params.restaurantId;
-    const restaurant = await Restaurant.findById(restaurantId);
+    const restaurant = await Restaurant.findById(restaurantId)
+      .populate("menuItems")
+      .lean();
 
     if (!restaurant) {
       const error: any = new Error("Restaurant not found");
@@ -16,6 +18,7 @@ const getRestaurantById = async (
       throw error;
     }
 
+    console.log(restaurant);
     res.status(200).json(restaurant);
   } catch (error) {
     next(error);

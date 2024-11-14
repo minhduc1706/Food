@@ -17,7 +17,7 @@ type updateUserRequest = {
   country: string;
 };
 
-export const useFetchCurrentUser = () => {
+export const useGetCurrentUser = () => {
   const { getAccessTokenSilently } = useAuth0();
   const fetchUserData = useCallback(async (): Promise<User> => {
     const accessToken = await getAccessTokenSilently();

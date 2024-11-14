@@ -26,7 +26,6 @@ export type Restaurant = {
   cuisines: string[];
   menuItems: MenuItem[];
   imageUrl: string;
-  lastUpdated: string;
 };
 
 export type RestaurantSearchResponse = {
@@ -36,4 +35,35 @@ export type RestaurantSearchResponse = {
     page: number;
     pages: number;
   };
+};
+
+export type CartItem = {
+  menuItem: MenuItem;
+  quantity: number;
+};
+
+export type OrderStatus =
+  | "placed"
+  | "paid"
+  | "inProgress"
+  | "outForDelivery"
+  | "delivered"
+  | "expired"
+  | "canceled"
+  | "failed";
+
+export type DeliveryOptions = "Standard" | "Priority" | "Scheduled";
+
+export type Order = {
+  _id: string;
+  restaurant: Restaurant;
+  user: string;
+  deliveryDetails: User;
+  cartItems: CartItem[];
+  deliveryTip?: number;
+  deliveryInstructions?: string;
+  deliveryOptions: DeliveryOptions;
+  totalAmount: number;
+  status: OrderStatus;
+  createdAt: Date;
 };

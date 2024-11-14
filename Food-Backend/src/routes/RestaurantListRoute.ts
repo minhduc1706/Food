@@ -1,5 +1,5 @@
 import express from "express";
-import { param, query } from "express-validator";
+import { param } from "express-validator";
 import RestaurantListController from "../controllers/RestaurantListController";
 
 const router = express.Router();
